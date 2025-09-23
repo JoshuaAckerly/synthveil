@@ -1,13 +1,11 @@
-import React from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+import React from 'react';
 
 const Main: React.FC<React.PropsWithChildren> = ({ children }) => (
     <div>
         <Header />
-        <main style={{ padding: '1rem' }}>
-            {children}
-        </main>
+        <main>{children}</main>
         <Footer />
     </div>
 );
