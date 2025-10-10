@@ -3,7 +3,7 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 
-const header: React.FC = () => {
+const Header: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
@@ -84,4 +84,4 @@ const header: React.FC = () => {
     );
 };
 
-export default header;
+export default Header;
