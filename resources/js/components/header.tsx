@@ -9,6 +9,16 @@ const header: React.FC = () => {
     return (
         <header className="absolute inset-x-0 top-0 z-50">
             <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+                <img
+                    alt="GraveYard Jokes Studios"
+                    src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
+                    className="h-10 w-auto dark:hidden"
+                />
+                <img
+                    alt="GraveYard Jokes Studios"
+                    src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
+                    className="h-10 w-auto not-dark:hidden"
+                />
                 <div className="ml-auto flex lg:hidden">
                     <button
                         type="button"
@@ -33,8 +43,16 @@ const header: React.FC = () => {
                     <div className="flex items-center justify-between">
                         <a href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">GraveYard Jokes Studios</span>
-                            {/* <img alt="#" src="#" className="h-8 w-auto dark:hidden" />
-                            <img alt="#" src="#" className="h-8 w-auto not-dark:hidden" /> */}
+                            <img
+                                alt="GraveYard Jokes Studios"
+                                src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
+                                className="h-8 w-auto dark:hidden"
+                            />
+                            <img
+                                alt="GraveYard Jokes Studios"
+                                src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
+                                className="h-8 w-auto not-dark:hidden"
+                            />
                         </a>
                         <button
                             type="button"

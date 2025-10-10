@@ -93,8 +93,16 @@ export default function Footer() {
             <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                     <div className="space-y-8">
-                        {/*  <img alt="Synth Veil" src="#" className="h-9 dark:hidden" />
-                        <img alt="Synth Veil" src="#" className="h-9 not-dark:hidden" /> */}
+                        <img
+                            alt="GraveYard Jokes Studios"
+                            src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
+                            className="h-8 w-auto dark:hidden"
+                        />
+                        <img
+                            alt="GraveYard Jokes Studios"
+                            src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
+                            className="h-8 w-auto not-dark:hidden"
+                        />
                         <p className="text-sm/6 text-balance text-gray-600 dark:text-gray-400">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet,
                             adipiscing nec, ultricies sed, dolor.
