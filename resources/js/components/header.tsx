@@ -3,80 +3,72 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 
+const Logo: React.FC<{ className?: string }> = ({ className }) => (
+    <img alt="Synth Veil" src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg" className={`h-10 w-auto ${className || ''}`} />
+);
+
 const Header: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header className="absolute inset-x-0 top-0 z-50">
-            <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
-                <img
-                    alt="GraveYard Jokes Studios"
-                    src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
-                    className="h-10 w-auto dark:hidden"
-                />
-                <img
-                    alt="GraveYard Jokes Studios"
-                    src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
-                    className="h-10 w-auto not-dark:hidden"
-                />
-                <div className="ml-auto flex lg:hidden">
-                    <button
-                        type="button"
-                        onClick={() => setMobileMenuOpen(true)}
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-200"
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <Bars3Icon aria-hidden="true" className="size-6" />
-                    </button>
-                </div>
-                <div className="mx-auto hidden lg:flex lg:gap-x-12">
-                    {navigation.map((item: NavigationItem) => (
-                        <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
-            </nav>
-            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                <div className="fixed inset-0 z-50" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[var(--foreground)] p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-[var(--foreground)] dark:sm:ring-[var(--primary-foreground)]">
-                    <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
-                            <span className="sr-only">GraveYard Jokes Studios</span>
-                            <img
-                                alt="GraveYard Jokes Studios"
-                                src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
-                                className="h-8 w-auto dark:hidden"
-                            />
-                            <img
-                                alt="GraveYard Jokes Studios"
-                                src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
-                                className="h-8 w-auto not-dark:hidden"
-                            />
+        <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/60 backdrop-blur-sm dark:border-white/5 dark:bg-[var(--foreground)]/60">
+            <div className="mx-auto max-w-7xl px-6">
+                <nav className="flex h-16 items-center justify-between" aria-label="Global">
+                    <a href="/" className="flex items-center gap-3">
+                        <Logo />
+                        <span className="text-lg font-semibold dark:text-white">Synth Veil</span>
+                    </a>
+
+                    <div className="hidden lg:flex lg:items-center lg:gap-8">
+                        {navigation.map((item: NavigationItem) => (
+                            <a key={item.name} href={item.href} className="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-white">
+                                {item.name}
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                        <a
+                            href="#"
+                            className="hidden items-center rounded-md bg-[var(--primary)] px-3 py-2 text-sm font-semibold text-white hover:opacity-95 sm:inline-flex"
+                        >
+                            Get tickets
                         </a>
                         <button
                             type="button"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-200"
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="-mr-2 inline-flex items-center rounded-md p-2 text-gray-700 lg:hidden dark:text-gray-200"
+                            aria-label="Open menu"
                         >
-                            <span className="sr-only">Close menu</span>
-                            <XMarkIcon aria-hidden="true" className="size-6" />
+                            <Bars3Icon aria-hidden="true" className="h-6 w-6" />
                         </button>
                     </div>
-                    <div className="mt-6 flow-root">
-                        <div className="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
-                            <div className="space-y-2 py-6">
-                                {navigation.map((item: NavigationItem) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
-                                    >
-                                        {item.name}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
+                </nav>
+            </div>
+
+            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+                <div className="fixed inset-0 z-50 bg-black/40" aria-hidden="true" />
+                <DialogPanel className="fixed top-0 right-0 z-50 h-full w-full max-w-sm overflow-y-auto bg-white p-6 dark:bg-[var(--foreground)]">
+                    <div className="flex items-center justify-between">
+                        <a href="/" className="flex items-center gap-3">
+                            <Logo className="h-8" />
+                            <span className="font-semibold">Synth Veil</span>
+                        </a>
+                        <button onClick={() => setMobileMenuOpen(false)} aria-label="Close menu" className="p-2">
+                            <XMarkIcon className="h-6 w-6 text-gray-700 dark:text-gray-200" />
+                        </button>
+                    </div>
+
+                    <div className="mt-8 space-y-4">
+                        {navigation.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
+                            >
+                                {item.name}
+                            </a>
+                        ))}
                     </div>
                 </DialogPanel>
             </Dialog>

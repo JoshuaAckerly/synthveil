@@ -87,95 +87,73 @@ const navigation = {
 
 export default function Footer() {
     return (
-        <footer className="bg-[var(--background)] dark:bg-[var(--background)]">
-            <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
-                <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-                    <div className="space-y-8">
-                        <img
-                            alt="GraveYard Jokes Studios"
-                            src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
-                            className="h-8 w-auto dark:hidden"
-                        />
-                        <img
-                            alt="GraveYard Jokes Studios"
-                            src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg"
-                            className="h-8 w-auto not-dark:hidden"
-                        />
-                        <p className="text-sm/6 text-balance text-gray-600 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet,
-                            adipiscing nec, ultricies sed, dolor.
-                        </p>
-                        <div className="flex gap-x-6">
+        <footer className="bg-transparent">
+            <div className="mx-auto max-w-7xl px-6 pt-12 pb-8 lg:px-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    <div>
+                        <a href="/" className="flex items-center gap-3">
+                            <img alt="Synth Veil" src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg" className="h-8 w-auto" />
+                            <span className="font-semibold">Synth Veil</span>
+                        </a>
+                        <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">Music, live shows, and sonic experiments from Joshua Ackerly.</p>
+                        <div className="mt-4 flex gap-4">
                             {navigation.social.map((item) => (
                                 <a
                                     key={item.name}
                                     href={item.href}
-                                    className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
+                                    className="text-gray-600 hover:text-gray-800 dark:text-gray-300"
+                                    aria-label={item.name}
                                 >
-                                    <span className="sr-only">{item.name}</span>
-                                    <item.icon aria-hidden="true" className="size-6" />
+                                    <item.icon className="h-5 w-5" />
                                 </a>
                             ))}
                         </div>
                     </div>
-                    <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
+
+                    <div className="md:col-span-2">
+                        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
                             <div>
-                                <h3 className="text-sm/6 font-semibold text-gray-900 dark:text-white">Solutions</h3>
-                                <ul role="list" className="mt-6 space-y-4">
+                                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Explore</h4>
+                                <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-400">
                                     {navigation.solutions.map((item) => (
                                         <li key={item.name}>
-                                            <a
-                                                href={item.href}
-                                                className="text-sm/6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-                                            >
+                                            <a href={item.href} className="hover:text-gray-900 dark:hover:text-gray-200">
                                                 {item.name}
                                             </a>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                            <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm/6 font-semibold text-gray-900 dark:text-white">Support</h3>
-                                <ul role="list" className="mt-6 space-y-4">
-                                    {navigation.support.map((item) => (
-                                        <li key={item.name}>
-                                            <a
-                                                href={item.href}
-                                                className="text-sm/6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-                                            >
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
                             <div>
-                                <h3 className="text-sm/6 font-semibold text-gray-900 dark:text-white">Company</h3>
-                                <ul role="list" className="mt-6 space-y-4">
+                                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Company</h4>
+                                <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-400">
                                     {navigation.company.map((item) => (
                                         <li key={item.name}>
-                                            <a
-                                                href={item.href}
-                                                className="text-sm/6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-                                            >
+                                            <a href={item.href} className="hover:text-gray-900 dark:hover:text-gray-200">
                                                 {item.name}
                                             </a>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                            <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm/6 font-semibold text-gray-900 dark:text-white">Legal</h3>
-                                <ul role="list" className="mt-6 space-y-4">
+                            <div>
+                                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Support</h4>
+                                <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                                    {navigation.support.map((item) => (
+                                        <li key={item.name}>
+                                            <a href={item.href} className="hover:text-gray-900 dark:hover:text-gray-200">
+                                                {item.name}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Legal</h4>
+                                <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-400">
                                     {navigation.legal.map((item) => (
                                         <li key={item.name}>
-                                            <a
-                                                href={item.href}
-                                                className="text-sm/6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-                                            >
+                                            <a href={item.href} className="hover:text-gray-900 dark:hover:text-gray-200">
                                                 {item.name}
                                             </a>
                                         </li>
@@ -185,10 +163,9 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 dark:border-white/10">
-                    <p className="text-sm/6 text-gray-600 dark:text-gray-400">
-                        &copy; {new Date().getFullYear()} Joshua Ackerly, All rights reserved.
-                    </p>
+
+                <div className="mt-8 border-t border-gray-200 pt-6 dark:border-white/5">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">&copy; {new Date().getFullYear()} Joshua Ackerly. All rights reserved.</p>
                 </div>
             </div>
         </footer>
