@@ -1,4 +1,4 @@
-import navigation, { NavigationItem } from '@/data/navigation';
+import navigation, { adminNavigation, NavigationItem } from '@/data/navigation';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
@@ -25,12 +25,18 @@ const Header: React.FC = () => {
                                 {item.name}
                             </a>
                         ))}
+                        <span className="text-gray-300 dark:text-gray-600">|</span>
+                        {adminNavigation.map((item: NavigationItem) => (
+                            <a key={item.name} href={item.href} className="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                                {item.name}
+                            </a>
+                        ))}
                     </div>
 
                     <div className="flex items-center gap-4">
                         <a
                             href="#"
-                            className="hidden items-center rounded-md bg-[var(--primary)] px-3 py-2 text-sm font-semibold text-white hover:opacity-95 sm:inline-flex"
+                            className="hidden items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-700 sm:inline-flex"
                         >
                             Get tickets
                         </a>
@@ -69,6 +75,17 @@ const Header: React.FC = () => {
                                 {item.name}
                             </a>
                         ))}
+                        <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-6">
+                            {adminNavigation.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/5"
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </DialogPanel>
             </Dialog>

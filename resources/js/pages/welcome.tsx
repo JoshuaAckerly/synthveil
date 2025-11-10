@@ -1,6 +1,7 @@
 'use client';
 
 import Main from '@/layouts/main';
+import { Button } from '@/components/ui/button';
 
 export default function Welcome() {
     return (
@@ -19,12 +20,12 @@ export default function Welcome() {
                         </p>
 
                         <div className="mt-8 flex justify-center gap-4">
-                            <a href="#" className="rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white hover:opacity-95">
+                            <Button size="lg">
                                 Buy tickets
-                            </a>
-                            <a href="#" className="rounded-md border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-white">
+                            </Button>
+                            <Button variant="outline" size="lg">
                                 Listen
-                            </a>
+                            </Button>
                         </div>
                     </div>
                 </div>
