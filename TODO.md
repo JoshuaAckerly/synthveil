@@ -27,8 +27,8 @@
 - [ ] API endpoints for mobile app
 
 ## Testing
-- [ ] Write unit tests for models
-- [ ] Add feature tests for controllers
+- [x] Write unit tests for models
+- [x] Add feature tests for controllers
 - [ ] Create frontend component tests
 - [ ] Set up end-to-end testing
 - [ ] Add test coverage reporting
