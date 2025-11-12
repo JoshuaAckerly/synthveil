@@ -11,6 +11,7 @@
 - [x] Create main application pages
 - [x] Implement core functionality
 - [x] Add data management features
+- [x] Create database seeders for all models
 
 ## Frontend Components
 - [x] Create reusable UI components library
@@ -29,6 +30,8 @@
 ## Testing
 - [x] Write unit tests for models
 - [x] Add feature tests for controllers
+- [x] Update tests to use PHP attributes (PHPUnit 12 compatibility)
+- [x] Fix route loading issues for test suite
 - [ ] Create frontend component tests
 - [ ] Set up end-to-end testing
 - [ ] Add test coverage reporting

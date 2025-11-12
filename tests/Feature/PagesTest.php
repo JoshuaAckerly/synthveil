@@ -5,27 +5,28 @@ namespace Tests\Feature;
 use App\Models\Event;
 use App\Models\Release;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PagesTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_loads_the_homepage()
     {
         $response = $this->get('/');
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_the_about_page()
     {
         $response = $this->get('/about');
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_the_music_page_with_releases()
     {
         Release::create([
@@ -38,7 +39,7 @@ class PagesTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_the_events_page_with_events()
     {
         Event::create([
@@ -52,14 +53,14 @@ class PagesTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_the_contact_page()
     {
         $response = $this->get('/contact');
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_the_admin_dashboard()
     {
         $response = $this->get('/admin');

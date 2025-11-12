@@ -4,13 +4,14 @@ namespace Tests\Feature\Admin;
 
 use App\Models\Release;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ReleaseControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_view_releases_index()
     {
         Release::create([
@@ -24,7 +25,7 @@ class ReleaseControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_create_a_release()
     {
         $data = [
@@ -46,7 +47,7 @@ class ReleaseControllerTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_release_creation()
     {
         $response = $this->post('/admin/releases', []);
@@ -54,7 +55,7 @@ class ReleaseControllerTest extends TestCase
         $response->assertSessionHasErrors(['title', 'type', 'release_date']);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_delete_a_release()
     {
         $release = Release::create([

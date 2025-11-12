@@ -4,13 +4,14 @@ namespace Tests\Unit;
 
 use App\Models\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class EventTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_create_an_event()
     {
         $event = Event::create([
@@ -30,7 +31,7 @@ class EventTest extends TestCase
         $this->assertFalse($event->is_featured);
     }
 
-    /** @test */
+    #[Test]
     public function it_casts_event_date_to_datetime()
     {
         $event = Event::create([
@@ -43,7 +44,7 @@ class EventTest extends TestCase
         $this->assertInstanceOf(\Carbon\Carbon::class, $event->event_date);
     }
 
-    /** @test */
+    #[Test]
     public function it_casts_price_to_decimal()
     {
         $event = Event::create([

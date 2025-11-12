@@ -4,13 +4,14 @@ namespace Tests\Unit;
 
 use App\Models\Release;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ReleaseTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_create_a_release()
     {
         $release = Release::create([
@@ -27,7 +28,7 @@ class ReleaseTest extends TestCase
         $this->assertTrue($release->is_featured);
     }
 
-    /** @test */
+    #[Test]
     public function it_casts_release_date_to_date()
     {
         $release = Release::create([
@@ -39,7 +40,7 @@ class ReleaseTest extends TestCase
         $this->assertInstanceOf(\Carbon\Carbon::class, $release->release_date);
     }
 
-    /** @test */
+    #[Test]
     public function it_casts_streaming_links_to_array()
     {
         $links = ['spotify' => 'https://spotify.com', 'apple' => 'https://apple.com'];

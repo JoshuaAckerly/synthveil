@@ -4,13 +4,14 @@ namespace Tests\Unit;
 
 use App\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ContactTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_create_a_contact()
     {
         $contact = Contact::create([
@@ -27,7 +28,7 @@ class ContactTest extends TestCase
         $this->assertFalse($contact->is_read);
     }
 
-    /** @test */
+    #[Test]
     public function it_defaults_is_read_to_false()
     {
         $contact = Contact::create([
@@ -40,7 +41,7 @@ class ContactTest extends TestCase
         $this->assertFalse($contact->is_read);
     }
 
-    /** @test */
+    #[Test]
     public function it_casts_is_read_to_boolean()
     {
         $contact = Contact::create([

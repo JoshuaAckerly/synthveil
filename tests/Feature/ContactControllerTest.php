@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ContactControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_store_a_contact_submission()
     {
         $data = [
@@ -31,7 +32,7 @@ class ContactControllerTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_required_fields()
     {
         $response = $this->post('/contact', []);
@@ -39,7 +40,7 @@ class ContactControllerTest extends TestCase
         $response->assertSessionHasErrors(['name', 'email', 'message']);
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_email_format()
     {
         $data = [
