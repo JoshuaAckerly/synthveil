@@ -1,0 +1,27 @@
+[Unit]
+Description=SynthVeil Inertia SSR Server
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/synthveil
+Environment=NODE_ENV=production
+Environment=INERTIA_SSR_PORT=13719
+ExecStart=/usr/bin/node bootstrap/ssr/ssr.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/synthveil/storage
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
