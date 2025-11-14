@@ -27,4 +27,5 @@ createServer((page) =>
             return <App {...props} />;
         },
     }),
+    13719  // synthveil SSR port
 );
