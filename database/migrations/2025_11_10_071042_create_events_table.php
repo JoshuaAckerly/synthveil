@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        if (!Schema::hasTable('events')) {
+            Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
@@ -22,7 +23,8 @@ return new class extends Migration
             $table->string('ticket_url')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
-        });
+            });
+        }
     }
 
     /**

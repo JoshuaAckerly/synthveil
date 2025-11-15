@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('releases', function (Blueprint $table) {
+        if (!Schema::hasTable('releases')) {
+            Schema::create('releases', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
@@ -21,7 +22,8 @@ return new class extends Migration
             $table->json('streaming_links')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
-        });
+            });
+        }
     }
 
     /**
