@@ -1,11 +1,27 @@
 'use client';
 
-import Main from '@/layouts/main';
+import SEO from '@/components/seo';
 import { Button } from '@/components/ui/button';
+import Main from '@/layouts/main';
 
 export default function Welcome() {
+    const structuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'MusicGroup',
+        name: 'Synth Veil',
+        genre: ['Ambient', 'Electronic', 'Experimental'],
+        url: 'https://synthveil.graveyardjokes.com',
+        description: 'Ambient synthscapes, modular experiments, and live performances. Exploring the boundaries of electronic music.',
+    };
+
     return (
         <>
+            <SEO
+                title="Synth Veil"
+                description="Ambient synthscapes, modular experiments, and live performances. Exploring the boundaries of electronic music."
+                canonicalUrl="https://synthveil.graveyardjokes.com/"
+                structuredData={structuredData}
+            />
             <Main>
                 <div className="bg-transparent">
                     <div className="mx-auto max-w-3xl px-6 py-24 text-center">
@@ -20,9 +36,7 @@ export default function Welcome() {
                         </p>
 
                         <div className="mt-8 flex justify-center gap-4">
-                            <Button size="lg">
-                                Buy tickets
-                            </Button>
+                            <Button size="lg">Buy tickets</Button>
                             <Button variant="outline" size="lg">
                                 Listen
                             </Button>
