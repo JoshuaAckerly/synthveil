@@ -10,7 +10,7 @@ interface Release {
     type: string;
     release_date: string;
     cover_image?: string;
-    streaming_links?: any;
+    streaming_links?: Record<string, string>;
     is_featured: boolean;
 }
 

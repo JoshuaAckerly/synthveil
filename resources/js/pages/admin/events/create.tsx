@@ -16,7 +16,7 @@ export default function Create() {
         event_date: '',
         price: '',
         ticket_url: '',
-        is_featured: false
+        is_featured: false,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -31,7 +31,7 @@ export default function Create() {
                     <Link href="/admin/events" className="text-indigo-600 hover:text-indigo-700">
                         ← Back to Events
                     </Link>
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-4">Add Event</h1>
+                    <h1 className="mt-4 text-4xl font-bold text-gray-900 dark:text-white">Add Event</h1>
                 </div>
 
                 <Card>
@@ -43,24 +43,16 @@ export default function Create() {
                             <FormField name="title" error={errors.title}>
                                 <FormLabel>Title</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        value={data.title}
-                                        onChange={e => setData('title', e.target.value)}
-                                        placeholder="Event title"
-                                    />
+                                    <Input value={data.title} onChange={(e) => setData('title', e.target.value)} placeholder="Event title" />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 <FormField name="venue" error={errors.venue}>
                                     <FormLabel>Venue</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            value={data.venue}
-                                            onChange={e => setData('venue', e.target.value)}
-                                            placeholder="Venue name"
-                                        />
+                                        <Input value={data.venue} onChange={(e) => setData('venue', e.target.value)} placeholder="Venue name" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormField>
@@ -70,7 +62,7 @@ export default function Create() {
                                     <FormControl>
                                         <Input
                                             value={data.location}
-                                            onChange={e => setData('location', e.target.value)}
+                                            onChange={(e) => setData('location', e.target.value)}
                                             placeholder="City, State"
                                         />
                                     </FormControl>
@@ -78,14 +70,14 @@ export default function Create() {
                                 </FormField>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 <FormField name="event_date" error={errors.event_date}>
                                     <FormLabel>Event Date</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="datetime-local"
                                             value={data.event_date}
-                                            onChange={e => setData('event_date', e.target.value)}
+                                            onChange={(e) => setData('event_date', e.target.value)}
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -98,7 +90,7 @@ export default function Create() {
                                             type="number"
                                             step="0.01"
                                             value={data.price}
-                                            onChange={e => setData('price', e.target.value)}
+                                            onChange={(e) => setData('price', e.target.value)}
                                             placeholder="0.00"
                                         />
                                     </FormControl>
@@ -112,7 +104,7 @@ export default function Create() {
                                     <Input
                                         type="url"
                                         value={data.ticket_url}
-                                        onChange={e => setData('ticket_url', e.target.value)}
+                                        onChange={(e) => setData('ticket_url', e.target.value)}
                                         placeholder="https://..."
                                     />
                                 </FormControl>
@@ -124,7 +116,7 @@ export default function Create() {
                                 <FormControl>
                                     <Textarea
                                         value={data.description}
-                                        onChange={e => setData('description', e.target.value)}
+                                        onChange={(e) => setData('description', e.target.value)}
                                         placeholder="Event description"
                                         rows={4}
                                     />
@@ -135,10 +127,7 @@ export default function Create() {
                             <FormField name="is_featured">
                                 <div className="flex items-center space-x-2">
                                     <FormControl>
-                                        <Checkbox
-                                            checked={data.is_featured}
-                                            onChange={e => setData('is_featured', e.target.checked)}
-                                        />
+                                        <Checkbox checked={data.is_featured} onChange={(e) => setData('is_featured', e.target.checked)} />
                                     </FormControl>
                                     <FormLabel>Featured Event</FormLabel>
                                 </div>

@@ -11,9 +11,7 @@ const navigation: NavigationItem[] = [
     { name: 'Contact', href: '/contact' },
 ];
 
-const adminNavigation: NavigationItem[] = [
-    { name: 'Admin', href: '/admin' },
-];
+const adminNavigation: NavigationItem[] = [{ name: 'Admin', href: '/admin' }];
 
 export default navigation;
 export { adminNavigation };

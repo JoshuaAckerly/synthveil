@@ -27,7 +27,11 @@ const Header: React.FC = () => {
                         ))}
                         <span className="text-gray-300 dark:text-gray-600">|</span>
                         {adminNavigation.map((item: NavigationItem) => (
-                            <a key={item.name} href={item.href} className="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                className="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            >
                                 {item.name}
                             </a>
                         ))}
@@ -75,7 +79,7 @@ const Header: React.FC = () => {
                                 {item.name}
                             </a>
                         ))}
-                        <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-6">
+                        <div className="mt-6 border-t border-gray-200 pt-4 dark:border-gray-700">
                             {adminNavigation.map((item) => (
                                 <a
                                     key={item.name}

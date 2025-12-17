@@ -27,7 +27,7 @@ export default function Edit({ release }: Props) {
         description: release.description || '',
         type: release.type,
         release_date: release.release_date,
-        is_featured: release.is_featured
+        is_featured: release.is_featured,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -42,7 +42,7 @@ export default function Edit({ release }: Props) {
                     <Link href="/admin/releases" className="text-indigo-600 hover:text-indigo-700">
                         ← Back to Releases
                     </Link>
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-4">Edit Release</h1>
+                    <h1 className="mt-4 text-4xl font-bold text-gray-900 dark:text-white">Edit Release</h1>
                 </div>
 
                 <Card>
@@ -54,10 +54,7 @@ export default function Edit({ release }: Props) {
                             <FormField name="title" error={errors.title}>
                                 <FormLabel>Title</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        value={data.title}
-                                        onChange={e => setData('title', e.target.value)}
-                                    />
+                                    <Input value={data.title} onChange={(e) => setData('title', e.target.value)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -65,10 +62,7 @@ export default function Edit({ release }: Props) {
                             <FormField name="type" error={errors.type}>
                                 <FormLabel>Type</FormLabel>
                                 <FormControl>
-                                    <Select
-                                        value={data.type}
-                                        onChange={e => setData('type', e.target.value)}
-                                    >
+                                    <Select value={data.type} onChange={(e) => setData('type', e.target.value)}>
                                         <option value="single">Single</option>
                                         <option value="ep">EP</option>
                                         <option value="album">Album</option>
@@ -80,11 +74,7 @@ export default function Edit({ release }: Props) {
                             <FormField name="release_date" error={errors.release_date}>
                                 <FormLabel>Release Date</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        type="date"
-                                        value={data.release_date}
-                                        onChange={e => setData('release_date', e.target.value)}
-                                    />
+                                    <Input type="date" value={data.release_date} onChange={(e) => setData('release_date', e.target.value)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -92,11 +82,7 @@ export default function Edit({ release }: Props) {
                             <FormField name="description" error={errors.description}>
                                 <FormLabel>Description</FormLabel>
                                 <FormControl>
-                                    <Textarea
-                                        value={data.description}
-                                        onChange={e => setData('description', e.target.value)}
-                                        rows={4}
-                                    />
+                                    <Textarea value={data.description} onChange={(e) => setData('description', e.target.value)} rows={4} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -104,10 +90,7 @@ export default function Edit({ release }: Props) {
                             <FormField name="is_featured">
                                 <div className="flex items-center space-x-2">
                                     <FormControl>
-                                        <Checkbox
-                                            checked={data.is_featured}
-                                            onChange={e => setData('is_featured', e.target.checked)}
-                                        />
+                                        <Checkbox checked={data.is_featured} onChange={(e) => setData('is_featured', e.target.checked)} />
                                     </FormControl>
                                     <FormLabel>Featured Release</FormLabel>
                                 </div>

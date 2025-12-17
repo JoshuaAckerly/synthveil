@@ -14,7 +14,7 @@ export default function Create() {
         description: '',
         type: 'single',
         release_date: '',
-        is_featured: false
+        is_featured: false,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -29,7 +29,7 @@ export default function Create() {
                     <Link href="/admin/releases" className="text-indigo-600 hover:text-indigo-700">
                         ← Back to Releases
                     </Link>
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-4">Add Release</h1>
+                    <h1 className="mt-4 text-4xl font-bold text-gray-900 dark:text-white">Add Release</h1>
                 </div>
 
                 <Card>
@@ -41,11 +41,7 @@ export default function Create() {
                             <FormField name="title" error={errors.title}>
                                 <FormLabel>Title</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        value={data.title}
-                                        onChange={e => setData('title', e.target.value)}
-                                        placeholder="Release title"
-                                    />
+                                    <Input value={data.title} onChange={(e) => setData('title', e.target.value)} placeholder="Release title" />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -53,10 +49,7 @@ export default function Create() {
                             <FormField name="type" error={errors.type}>
                                 <FormLabel>Type</FormLabel>
                                 <FormControl>
-                                    <Select
-                                        value={data.type}
-                                        onChange={e => setData('type', e.target.value)}
-                                    >
+                                    <Select value={data.type} onChange={(e) => setData('type', e.target.value)}>
                                         <option value="single">Single</option>
                                         <option value="ep">EP</option>
                                         <option value="album">Album</option>
@@ -68,11 +61,7 @@ export default function Create() {
                             <FormField name="release_date" error={errors.release_date}>
                                 <FormLabel>Release Date</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        type="date"
-                                        value={data.release_date}
-                                        onChange={e => setData('release_date', e.target.value)}
-                                    />
+                                    <Input type="date" value={data.release_date} onChange={(e) => setData('release_date', e.target.value)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -82,7 +71,7 @@ export default function Create() {
                                 <FormControl>
                                     <Textarea
                                         value={data.description}
-                                        onChange={e => setData('description', e.target.value)}
+                                        onChange={(e) => setData('description', e.target.value)}
                                         placeholder="Release description"
                                         rows={4}
                                     />
@@ -93,10 +82,7 @@ export default function Create() {
                             <FormField name="is_featured">
                                 <div className="flex items-center space-x-2">
                                     <FormControl>
-                                        <Checkbox
-                                            checked={data.is_featured}
-                                            onChange={e => setData('is_featured', e.target.checked)}
-                                        />
+                                        <Checkbox checked={data.is_featured} onChange={(e) => setData('is_featured', e.target.checked)} />
                                     </FormControl>
                                     <FormLabel>Featured Release</FormLabel>
                                 </div>

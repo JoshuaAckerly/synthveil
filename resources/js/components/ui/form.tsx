@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { createContext, forwardRef, HTMLAttributes, useContext, useId } from 'react';
+import { cloneElement, createContext, forwardRef, HTMLAttributes, isValidElement, useContext, useId } from 'react';
 
 interface FormFieldContextValue {
     id: string;
@@ -49,20 +49,15 @@ const FormControl = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         
         return (
             <div ref={ref} {...props}>
-                {props.children && 
-                    typeof props.children === 'object' && 
-                    'props' in props.children
-                        ? {
-                            ...props.children,
-                            props: {
-                                ...props.children.props,
-                                id,
-                                name,
-                                'aria-invalid': error ? 'true' : 'false',
-                                'aria-describedby': error ? `${id}-error` : undefined,
-                            }
-                        }
-                        : props.children
+                {isValidElement(props.children)
+                    ? cloneElement(props.children, {
+                        id,
+                        name,
+                        'aria-invalid': error ? 'true' : 'false',
+                        'aria-describedby': error ? `${id}-error` : undefined,
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      } as any)
+                    : props.children
                 }
             </div>
         );
@@ -91,4 +86,4 @@ const FormMessage = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagrap
 );
 FormMessage.displayName = 'FormMessage';
 
-export { FormField, FormLabel, FormControl, FormMessage };
+export { FormControl, FormField, FormLabel, FormMessage };
