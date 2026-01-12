@@ -19,14 +19,8 @@ npm run build:ssr
 
 ### 3. Start SSR Server
 
-**On Linux/macOS:**
 ```bash
 ./manage-ssr.sh start
-```
-
-**On Windows:**
-```cmd
-manage-ssr.bat start
 ```
 
 **Manual Start:**
@@ -80,14 +74,6 @@ chmod +x manage-ssr.sh
 ./manage-ssr.sh status
 ./manage-ssr.sh restart
 ./manage-ssr.sh stop
-```
-
-**Windows:**
-```cmd
-manage-ssr.bat start
-manage-ssr.bat status
-manage-ssr.bat restart
-manage-ssr.bat stop
 ```
 
 ## Configuration

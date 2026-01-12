@@ -6,8 +6,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     server: {
-        port: 5176,
-        host: '0.0.0.0'
+        port: 8085,
+        host: '10.0.1.30'
     },
     plugins: [
         laravel({
