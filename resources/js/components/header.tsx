@@ -1,4 +1,5 @@
 import navigation, { adminNavigation, NavigationItem } from '@/data/navigation';
+import { getLoginUrl } from '../env';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
@@ -35,6 +36,7 @@ const Header: React.FC = () => {
                                 {item.name}
                             </a>
                         ))}
+                        <a href={getLoginUrl('synthveil')} className="text-sm font-medium text-indigo-600 hover:text-indigo-800 ml-4">Login</a>
                     </div>
 
                     <div className="flex items-center gap-4">

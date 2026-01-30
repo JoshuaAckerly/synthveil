@@ -1,4 +1,6 @@
+
 import { Head } from '@inertiajs/react';
+import { getProjectUrl } from '../env';
 
 interface SEOProps {
     title?: string;
@@ -20,7 +22,8 @@ export default function SEO({
     structuredData,
 }: SEOProps) {
     const siteName = 'Synth Veil';
-    const baseUrl = 'https://synthveil.graveyardjokes.com';
+    // Use env utility for dynamic URLs
+    const baseUrl = getProjectUrl('synthveil');
     const currentUrl = canonicalUrl || baseUrl;
 
     const fullTitle = title === 'Synth Veil' ? title : `${title} - ${siteName}`;
@@ -45,7 +48,7 @@ export default function SEO({
             <meta property="og:url" content={currentUrl} />
             <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={ogImage} />
+            <meta property="og:image" content={ogImage || `${baseUrl}images/og-image.jpg`} />
             <meta property="og:site_name" content={siteName} />
             <meta property="og:locale" content="en_US" />
 
@@ -54,7 +57,7 @@ export default function SEO({
             <meta property="twitter:url" content={currentUrl} />
             <meta property="twitter:title" content={fullTitle} />
             <meta property="twitter:description" content={description} />
-            <meta property="twitter:image" content={ogImage} />
+            <meta property="twitter:image" content={ogImage || `${baseUrl}images/og-image.jpg`} />
 
             {/* Additional Meta Tags */}
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />

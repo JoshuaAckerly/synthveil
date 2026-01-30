@@ -1,8 +1,10 @@
 'use client';
 
+
 import SEO from '@/components/seo';
 import { Button } from '@/components/ui/button';
 import Main from '@/layouts/main';
+import { getProjectUrl } from '../env';
 
 export default function Welcome() {
     const structuredData = {
@@ -10,7 +12,7 @@ export default function Welcome() {
         '@type': 'MusicGroup',
         name: 'Synth Veil',
         genre: ['Ambient', 'Electronic', 'Experimental'],
-        url: 'https://synthveil.graveyardjokes.com',
+        url: getProjectUrl('synthveil'),
         description: 'Ambient synthscapes, modular experiments, and live performances. Exploring the boundaries of electronic music.',
     };
 
@@ -19,7 +21,7 @@ export default function Welcome() {
             <SEO
                 title="Synth Veil"
                 description="Ambient synthscapes, modular experiments, and live performances. Exploring the boundaries of electronic music."
-                canonicalUrl="https://synthveil.graveyardjokes.com/"
+                canonicalUrl={getProjectUrl('synthveil') + '/'}
                 structuredData={structuredData}
             />
             <Main>
