@@ -38,25 +38,26 @@ export default defineConfig(({ mode }) => {
 
     return {
         server,
-    plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.tsx'],
-            ssr: 'resources/js/ssr.tsx',
-            refresh: true,
-        }),
-        react(),
-        tailwindcss(),
-    ],
-    esbuild: {
-        jsx: 'automatic',
-    },
-    resolve: {
-        alias: {
-            '@': resolve(__dirname, 'resources/js'),
-            'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
+        plugins: [
+            laravel({
+                input: ['resources/css/app.css', 'resources/js/app.tsx'],
+                ssr: 'resources/js/ssr.tsx',
+                refresh: true,
+            }),
+            react(),
+            tailwindcss(),
+        ],
+        esbuild: {
+            jsx: 'automatic',
         },
-    },
-    ssr: {
-        noExternal: ['react', 'react-dom', '@inertiajs/react', '@inertiajs/core'],
-    },
+        resolve: {
+            alias: {
+                '@': resolve(__dirname, 'resources/js'),
+                'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
+            },
+        },
+        ssr: {
+            noExternal: ['react', 'react-dom', '@inertiajs/react', '@inertiajs/core'],
+        },
+    };
 });

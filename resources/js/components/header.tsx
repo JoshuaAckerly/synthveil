@@ -36,7 +36,6 @@ const Header: React.FC = () => {
                                 {item.name}
                             </a>
                         ))}
-                        <a href={getLoginUrl('synthveil')} className="text-sm font-medium text-indigo-600 hover:text-indigo-800 ml-4">Login</a>
                     </div>
 
                     <div className="flex items-center gap-4">
