@@ -6,12 +6,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Main from '@/layouts/main';
 import { useForm } from '@inertiajs/react';
+import React, { useState } from 'react';
 
 interface Props {
     success?: string;
 }
 
 export default function Contact({ success }: Props) {
+    const [submitError, setSubmitError] = useState<string | null>(null);
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         email: '',
@@ -20,7 +22,14 @@ export default function Contact({ success }: Props) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        post('/contact');
+        post('/contact', {
+            onStart: () => setSubmitError(null),
+            onError: (formErrors) => {
+                if (Object.keys(formErrors).length === 0) {
+                    setSubmitError('Your message could not be sent right now. Please try again.');
+                }
+            },
+        });
     };
     return (
         <>
@@ -44,7 +53,20 @@ export default function Contact({ success }: Props) {
                                     {success}
                                 </div>
                             )}
-                            <form onSubmit={handleSubmit} className="space-y-6">
+
+                            {submitError && (
+                                <div className="mb-6 rounded-md border border-red-200 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400">
+                                    {submitError}
+                                </div>
+                            )}
+
+                            {Object.keys(errors).length > 0 && (
+                                <div className="mb-6 rounded-md border border-red-200 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400">
+                                    Please review the highlighted fields and try again.
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit} className="space-y-6" aria-busy={processing ? 'true' : 'false'}>
                                 <FormField name="name" error={errors.name}>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>

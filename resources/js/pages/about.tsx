@@ -1,6 +1,7 @@
 import SEO from '@/components/seo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { getProjectUrl } from '@/env';
 import Main from '@/layouts/main';
 
 export default function About() {
@@ -10,7 +11,7 @@ export default function About() {
                 title="About"
                 description="Synth Veil is an exploration of ambient soundscapes and modular synthesis, creating immersive audio experiences that blur the boundaries between electronic and organic sound."
                 keywords="synth veil, about, ambient music, electronic music, modular synthesis, soundscapes, experimental music"
-                canonicalUrl={require('../env').getProjectUrl('synthveil') + '/about'}
+                canonicalUrl={getProjectUrl('synthveil') + '/about'}
             />
             <Main>
                 <div className="mx-auto max-w-4xl px-6 py-16">

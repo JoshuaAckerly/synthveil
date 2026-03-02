@@ -3,16 +3,6 @@
 
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly MODE: string;
-  // add other env vars here as needed
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
-
-
 // Use VITE_SERVER_ENV from .env, fallback to import.meta.env.MODE
 const getBaseDomain = () => {
   const env = import.meta.env.VITE_SERVER_ENV || import.meta.env.MODE;

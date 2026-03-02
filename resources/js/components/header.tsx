@@ -1,5 +1,5 @@
 import navigation, { adminNavigation, NavigationItem } from '@/data/navigation';
-import { getLoginUrl } from '../env';
+import { Link } from '@inertiajs/react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
@@ -15,26 +15,26 @@ const Header: React.FC = () => {
         <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/60 backdrop-blur-sm dark:border-white/5 dark:bg-[var(--foreground)]/60">
             <div className="mx-auto max-w-7xl px-6">
                 <nav className="flex h-16 items-center justify-between" aria-label="Global">
-                    <a href="/" className="flex items-center gap-3">
+                    <Link href="/" className="flex items-center gap-3">
                         <Logo />
                         <span className="text-lg font-semibold dark:text-white">Synth Veil</span>
-                    </a>
+                    </Link>
 
                     <div className="hidden lg:flex lg:items-center lg:gap-8">
                         {navigation.map((item: NavigationItem) => (
-                            <a key={item.name} href={item.href} className="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-white">
+                            <Link key={item.name} href={item.href} className="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-white">
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                         <span className="text-gray-300 dark:text-gray-600">|</span>
                         {adminNavigation.map((item: NavigationItem) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
                                 className="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
@@ -61,10 +61,10 @@ const Header: React.FC = () => {
                 <div className="fixed inset-0 z-50 bg-black/40" aria-hidden="true" />
                 <DialogPanel className="fixed top-0 right-0 z-50 h-full w-full max-w-sm overflow-y-auto bg-white p-6 dark:bg-[var(--foreground)]">
                     <div className="flex items-center justify-between">
-                        <a href="/" className="flex items-center gap-3">
+                        <Link href="/" className="flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
                             <Logo className="h-8" />
                             <span className="font-semibold">Synth Veil</span>
-                        </a>
+                        </Link>
                         <button onClick={() => setMobileMenuOpen(false)} aria-label="Close menu" className="p-2">
                             <XMarkIcon className="h-6 w-6 text-gray-700 dark:text-gray-200" />
                         </button>
@@ -72,23 +72,25 @@ const Header: React.FC = () => {
 
                     <div className="mt-8 space-y-4">
                         {navigation.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
+                                onClick={() => setMobileMenuOpen(false)}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                         <div className="mt-6 border-t border-gray-200 pt-4 dark:border-gray-700">
                             {adminNavigation.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
                                     href={item.href}
+                                    onClick={() => setMobileMenuOpen(false)}
                                     className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/5"
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
