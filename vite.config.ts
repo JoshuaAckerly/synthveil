@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
         // default: local/development
         server = {
             port: 8085,
-            host: '10.0.1.30',
+            host: '0.0.0.0',
             origin: 'http://synthveil.graveyardjokes.local:8085',
             cors: {
                 origin: 'http://synthveil.graveyardjokes.local',
