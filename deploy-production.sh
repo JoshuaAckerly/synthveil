@@ -5,7 +5,7 @@
 set -e
 
 # Configuration
-SSR_PORT=13717
+SSR_PORT=13719
 PROJECT_NAME="synthveil"
 DEPLOY_PATH="/var/www/synthveil"
 PHP_VERSION="8.3"
