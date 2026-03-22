@@ -1,4 +1,5 @@
 import navigation, { adminNavigation, NavigationItem } from '@/data/navigation';
+import NotificationBell from '@/components/NotificationBell';
 import { Link } from '@inertiajs/react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -39,6 +40,7 @@ const Header: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-4">
+                        <NotificationBell />
                         <a
                             href="#"
                             className="hidden items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-700 sm:inline-flex"
