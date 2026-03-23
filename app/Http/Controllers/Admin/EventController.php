@@ -12,6 +12,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('event_date', 'desc')->get();
+
         return Inertia::render('admin/events/index', ['events' => $events]);
     }
 
@@ -30,10 +31,11 @@ class EventController extends Controller
             'event_date' => 'required|date',
             'price' => 'nullable|numeric|min:0',
             'ticket_url' => 'nullable|url',
-            'is_featured' => 'boolean'
+            'is_featured' => 'boolean',
         ]);
 
         Event::create($validated);
+
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully!');
     }
 
@@ -52,16 +54,18 @@ class EventController extends Controller
             'event_date' => 'required|date',
             'price' => 'nullable|numeric|min:0',
             'ticket_url' => 'nullable|url',
-            'is_featured' => 'boolean'
+            'is_featured' => 'boolean',
         ]);
 
         $event->update($validated);
+
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully!');
     }
 
     public function destroy(Event $event)
     {
         $event->delete();
+
         return back()->with('success', 'Event deleted successfully!');
     }
 }

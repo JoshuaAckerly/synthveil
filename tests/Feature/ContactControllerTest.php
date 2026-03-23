@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -17,18 +16,18 @@ class ContactControllerTest extends TestCase
         $data = [
             'name' => 'John Doe',
             'email' => 'john@example.com',
-            'message' => 'This is a test message'
+            'message' => 'This is a test message',
         ];
 
         $response = $this->post('/contact', $data);
 
         $response->assertRedirect();
         $response->assertSessionHas('success', 'Message sent successfully!');
-        
+
         $this->assertDatabaseHas('contacts', [
             'name' => 'John Doe',
             'email' => 'john@example.com',
-            'message' => 'This is a test message'
+            'message' => 'This is a test message',
         ]);
     }
 
@@ -46,7 +45,7 @@ class ContactControllerTest extends TestCase
         $data = [
             'name' => 'John Doe',
             'email' => 'invalid-email',
-            'message' => 'Test message'
+            'message' => 'Test message',
         ];
 
         $response = $this->post('/contact', $data);

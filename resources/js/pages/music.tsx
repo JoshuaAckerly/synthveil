@@ -164,34 +164,43 @@ export default function Music({ releases }: Props) {
                         <>
                             <div className="mb-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300">
                                 <span>
-                                    Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}-
-                                    {Math.min(currentPage * ITEMS_PER_PAGE, filteredReleases.length)} of {filteredReleases.length}
+                                    Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}-{Math.min(currentPage * ITEMS_PER_PAGE, filteredReleases.length)}{' '}
+                                    of {filteredReleases.length}
                                 </span>
                                 <span>
                                     Page {currentPage} of {totalPages}
                                 </span>
                             </div>
 
-                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                            {paginatedReleases.map((release) => (
-                                <Card key={release.id} className="transition-shadow hover:shadow-lg">
-                                    <CardHeader>
-                                        <CardTitle className="text-xl">{release.title}</CardTitle>
-                                        <p className="text-sm font-medium text-indigo-600 capitalize dark:text-indigo-400">{release.type}</p>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="mb-4 text-gray-600 dark:text-gray-300">{release.description || 'No description available'}</p>
-                                        <p className="mb-4 text-sm text-gray-500">Released: {new Date(release.release_date).toLocaleDateString()}</p>
-                                        <Button variant="outline" size="sm" className="w-full">
-                                            Listen Now
-                                        </Button>
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </div>
+                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                                {paginatedReleases.map((release) => (
+                                    <Card key={release.id} className="transition-shadow hover:shadow-lg">
+                                        <CardHeader>
+                                            <CardTitle className="text-xl">{release.title}</CardTitle>
+                                            <p className="text-sm font-medium text-indigo-600 capitalize dark:text-indigo-400">{release.type}</p>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="mb-4 text-gray-600 dark:text-gray-300">
+                                                {release.description || 'No description available'}
+                                            </p>
+                                            <p className="mb-4 text-sm text-gray-500">
+                                                Released: {new Date(release.release_date).toLocaleDateString()}
+                                            </p>
+                                            <Button variant="outline" size="sm" className="w-full">
+                                                Listen Now
+                                            </Button>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
                             {totalPages > 1 && (
                                 <div className="mt-8 flex items-center justify-center gap-3">
-                                    <Button variant="outline" size="sm" onClick={() => setCurrentPage((page) => page - 1)} disabled={currentPage === 1}>
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => setCurrentPage((page) => page - 1)}
+                                        disabled={currentPage === 1}
+                                    >
                                         Previous
                                     </Button>
                                     <span className="text-sm text-gray-600 dark:text-gray-300">

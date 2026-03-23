@@ -16,11 +16,13 @@ Route::get('/about', function () {
 
 Route::get('/music', function () {
     $releases = Release::orderBy('release_date', 'desc')->get();
+
     return Inertia::render('music', ['releases' => $releases]);
 })->name('music');
 
 Route::get('/events', function () {
     $events = Event::orderBy('event_date', 'desc')->get();
+
     return Inertia::render('events', ['events' => $events]);
 })->name('events');
 

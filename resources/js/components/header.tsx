@@ -1,8 +1,8 @@
-import navigation, { adminNavigation, NavigationItem } from '@/data/navigation';
 import NotificationBell from '@/components/NotificationBell';
-import { Link } from '@inertiajs/react';
+import navigation, { adminNavigation, NavigationItem } from '@/data/navigation';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link } from '@inertiajs/react';
 import React, { useState } from 'react';
 
 const Logo: React.FC<{ className?: string }> = ({ className }) => (

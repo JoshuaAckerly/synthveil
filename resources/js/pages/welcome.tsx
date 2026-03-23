@@ -1,6 +1,5 @@
 'use client';
 
-
 import SEO from '@/components/seo';
 import { Button } from '@/components/ui/button';
 import Main from '@/layouts/main';

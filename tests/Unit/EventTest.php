@@ -21,7 +21,7 @@ class EventTest extends TestCase
             'location' => 'Test City',
             'event_date' => '2024-12-01 20:00:00',
             'price' => 25.50,
-            'is_featured' => false
+            'is_featured' => false,
         ]);
 
         $this->assertInstanceOf(Event::class, $event);
@@ -52,7 +52,7 @@ class EventTest extends TestCase
             'venue' => 'Test Venue',
             'location' => 'Test City',
             'event_date' => '2024-12-01 20:00:00',
-            'price' => 25.99
+            'price' => 25.99,
         ]);
 
         $this->assertEquals('25.99', $event->price);

@@ -14,12 +14,12 @@ class Event extends Model
         'event_date',
         'price',
         'ticket_url',
-        'is_featured'
+        'is_featured',
     ];
 
     protected $casts = [
         'event_date' => 'datetime',
         'price' => 'decimal:2',
-        'is_featured' => 'boolean'
+        'is_featured' => 'boolean',
     ];
 }

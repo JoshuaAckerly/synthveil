@@ -32,7 +32,7 @@ class PagesTest extends TestCase
         Release::create([
             'title' => 'Test Release',
             'type' => 'single',
-            'release_date' => '2024-01-01'
+            'release_date' => '2024-01-01',
         ]);
 
         $response = $this->get('/music');
@@ -46,7 +46,7 @@ class PagesTest extends TestCase
             'title' => 'Test Event',
             'venue' => 'Test Venue',
             'location' => 'Test City',
-            'event_date' => '2025-01-01 20:00:00'
+            'event_date' => '2025-01-01 20:00:00',
         ]);
 
         $response = $this->get('/events');

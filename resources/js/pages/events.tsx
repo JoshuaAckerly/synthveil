@@ -47,9 +47,7 @@ export default function Events({ events }: Props) {
         return events.filter((event) => {
             const eventDate = new Date(event.event_date);
             const matchesTimeFilter =
-                timeFilter === 'all' ||
-                (timeFilter === 'upcoming' && eventDate >= now) ||
-                (timeFilter === 'past' && eventDate < now);
+                timeFilter === 'all' || (timeFilter === 'upcoming' && eventDate >= now) || (timeFilter === 'past' && eventDate < now);
 
             const matchesQuery =
                 normalizedQuery.length === 0 ||
@@ -195,7 +193,9 @@ export default function Events({ events }: Props) {
                                                 </div>
                                                 <div className="space-y-2">
                                                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Date</p>
-                                                    <p className="text-gray-900 dark:text-gray-100">{new Date(event.event_date).toLocaleDateString()}</p>
+                                                    <p className="text-gray-900 dark:text-gray-100">
+                                                        {new Date(event.event_date).toLocaleDateString()}
+                                                    </p>
                                                 </div>
                                                 {event.price && (
                                                     <div className="space-y-2">
@@ -216,7 +216,12 @@ export default function Events({ events }: Props) {
 
                                 {totalPages > 1 && (
                                     <div className="flex items-center justify-center gap-3">
-                                        <Button variant="outline" size="sm" onClick={() => setCurrentPage((page) => page - 1)} disabled={currentPage === 1}>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => setCurrentPage((page) => page - 1)}
+                                            disabled={currentPage === 1}
+                                        >
                                             Previous
                                         </Button>
                                         <span className="text-sm text-gray-600 dark:text-gray-300">
