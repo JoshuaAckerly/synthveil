@@ -13,20 +13,20 @@ return new class extends Migration
     {
         // Add missing columns to releases table
         Schema::table('releases', function (Blueprint $table) {
-            if (!Schema::hasColumn('releases', 'cover_image')) {
+            if (! Schema::hasColumn('releases', 'cover_image')) {
                 $table->string('cover_image')->nullable()->after('release_date');
             }
-            if (!Schema::hasColumn('releases', 'streaming_links')) {
+            if (! Schema::hasColumn('releases', 'streaming_links')) {
                 $table->json('streaming_links')->nullable()->after('cover_image');
             }
-            if (!Schema::hasColumn('releases', 'is_featured')) {
+            if (! Schema::hasColumn('releases', 'is_featured')) {
                 $table->boolean('is_featured')->default(false)->after('streaming_links');
             }
         });
 
         // Add missing columns to contacts table
         Schema::table('contacts', function (Blueprint $table) {
-            if (!Schema::hasColumn('contacts', 'is_read')) {
+            if (! Schema::hasColumn('contacts', 'is_read')) {
                 $table->boolean('is_read')->default(false)->after('message');
             }
         });

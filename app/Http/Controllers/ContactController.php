@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class ContactController extends Controller
 {
@@ -13,7 +12,7 @@ class ContactController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'message' => 'required|string|max:1000'
+            'message' => 'required|string|max:1000',
         ]);
 
         Contact::create($validated);

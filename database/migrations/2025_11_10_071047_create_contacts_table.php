@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('contacts')) {
+        if (! Schema::hasTable('contacts')) {
             Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->text('message');
-            $table->boolean('is_read')->default(false);
-            $table->timestamps();
+                $table->id();
+                $table->string('name');
+                $table->string('email');
+                $table->text('message');
+                $table->boolean('is_read')->default(false);
+                $table->timestamps();
             });
         }
     }

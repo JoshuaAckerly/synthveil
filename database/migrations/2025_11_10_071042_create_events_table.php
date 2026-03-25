@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('events')) {
+        if (! Schema::hasTable('events')) {
             Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('venue');
-            $table->string('location');
-            $table->datetime('event_date');
-            $table->decimal('price', 8, 2)->nullable();
-            $table->string('ticket_url')->nullable();
-            $table->boolean('is_featured')->default(false);
-            $table->timestamps();
+                $table->id();
+                $table->string('title');
+                $table->text('description')->nullable();
+                $table->string('venue');
+                $table->string('location');
+                $table->datetime('event_date');
+                $table->decimal('price', 8, 2)->nullable();
+                $table->string('ticket_url')->nullable();
+                $table->boolean('is_featured')->default(false);
+                $table->timestamps();
             });
         }
     }

@@ -17,7 +17,7 @@ class ReleaseControllerTest extends TestCase
         Release::create([
             'title' => 'Test Release',
             'type' => 'single',
-            'release_date' => '2024-01-01'
+            'release_date' => '2024-01-01',
         ]);
 
         $response = $this->get('/admin/releases');
@@ -33,17 +33,17 @@ class ReleaseControllerTest extends TestCase
             'description' => 'Test description',
             'type' => 'single',
             'release_date' => '2024-01-01',
-            'is_featured' => true
+            'is_featured' => true,
         ];
 
         $response = $this->post('/admin/releases', $data);
 
         $response->assertRedirect('/admin/releases');
         $response->assertSessionHas('success', 'Release created successfully!');
-        
+
         $this->assertDatabaseHas('releases', [
             'title' => 'New Release',
-            'type' => 'single'
+            'type' => 'single',
         ]);
     }
 
@@ -61,14 +61,14 @@ class ReleaseControllerTest extends TestCase
         $release = Release::create([
             'title' => 'Test Release',
             'type' => 'single',
-            'release_date' => '2024-01-01'
+            'release_date' => '2024-01-01',
         ]);
 
         $response = $this->delete("/admin/releases/{$release->id}");
 
         $response->assertRedirect();
         $response->assertSessionHas('success', 'Release deleted successfully!');
-        
+
         $this->assertDatabaseMissing('releases', ['id' => $release->id]);
     }
 }

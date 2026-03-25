@@ -1,4 +1,3 @@
-
 import { Head } from '@inertiajs/react';
 import { getProjectUrl } from '../env';
 

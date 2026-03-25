@@ -13,12 +13,12 @@ class Release extends Model
         'release_date',
         'cover_image',
         'streaming_links',
-        'is_featured'
+        'is_featured',
     ];
 
     protected $casts = [
         'release_date' => 'date',
         'streaming_links' => 'array',
-        'is_featured' => 'boolean'
+        'is_featured' => 'boolean',
     ];
 }

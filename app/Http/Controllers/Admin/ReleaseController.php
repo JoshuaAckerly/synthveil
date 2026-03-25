@@ -12,6 +12,7 @@ class ReleaseController extends Controller
     public function index()
     {
         $releases = Release::orderBy('created_at', 'desc')->get();
+
         return Inertia::render('admin/releases/index', ['releases' => $releases]);
     }
 
@@ -27,10 +28,11 @@ class ReleaseController extends Controller
             'description' => 'nullable|string',
             'type' => 'required|in:album,single,ep',
             'release_date' => 'required|date',
-            'is_featured' => 'boolean'
+            'is_featured' => 'boolean',
         ]);
 
         Release::create($validated);
+
         return redirect()->route('admin.releases.index')->with('success', 'Release created successfully!');
     }
 
@@ -46,16 +48,18 @@ class ReleaseController extends Controller
             'description' => 'nullable|string',
             'type' => 'required|in:album,single,ep',
             'release_date' => 'required|date',
-            'is_featured' => 'boolean'
+            'is_featured' => 'boolean',
         ]);
 
         $release->update($validated);
+
         return redirect()->route('admin.releases.index')->with('success', 'Release updated successfully!');
     }
 
     public function destroy(Release $release)
     {
         $release->delete();
+
         return back()->with('success', 'Release deleted successfully!');
     }
 }

@@ -18,7 +18,7 @@ class ContactTest extends TestCase
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'message' => 'Test message',
-            'is_read' => false
+            'is_read' => false,
         ]);
 
         $this->assertInstanceOf(Contact::class, $contact);
@@ -35,7 +35,7 @@ class ContactTest extends TestCase
             'name' => 'Jane Doe',
             'email' => 'jane@example.com',
             'message' => 'Another test message',
-            'is_read' => false
+            'is_read' => false,
         ]);
 
         $this->assertFalse($contact->is_read);
@@ -48,7 +48,7 @@ class ContactTest extends TestCase
             'name' => 'Test User',
             'email' => 'test@example.com',
             'message' => 'Test message',
-            'is_read' => 1
+            'is_read' => 1,
         ]);
 
         $this->assertIsBool($contact->is_read);

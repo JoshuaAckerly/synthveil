@@ -13,18 +13,18 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin User',
                 'email' => 'admin@synthveil.com',
-                'password' => bcrypt('password')
+                'password' => bcrypt('password'),
             ],
             [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
-                'password' => bcrypt('password')
+                'password' => bcrypt('password'),
             ],
             [
                 'name' => 'Demo User',
                 'email' => 'demo@synthveil.com',
-                'password' => bcrypt('password')
-            ]
+                'password' => bcrypt('password'),
+            ],
         ];
 
         foreach ($users as $user) {

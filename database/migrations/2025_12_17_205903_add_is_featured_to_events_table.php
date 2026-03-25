@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('events', function (Blueprint $table) {
-            if (!Schema::hasColumn('events', 'is_featured')) {
+            if (! Schema::hasColumn('events', 'is_featured')) {
                 $table->boolean('is_featured')->default(false)->after('ticket_url');
             }
         });

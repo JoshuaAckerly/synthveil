@@ -19,7 +19,7 @@ class ReleaseTest extends TestCase
             'description' => 'Test description',
             'type' => 'single',
             'release_date' => '2024-01-01',
-            'is_featured' => true
+            'is_featured' => true,
         ]);
 
         $this->assertInstanceOf(Release::class, $release);
@@ -44,12 +44,12 @@ class ReleaseTest extends TestCase
     public function it_casts_streaming_links_to_array()
     {
         $links = ['spotify' => 'https://spotify.com', 'apple' => 'https://apple.com'];
-        
+
         $release = Release::create([
             'title' => 'Test Release',
             'type' => 'ep',
             'release_date' => '2024-01-01',
-            'streaming_links' => $links
+            'streaming_links' => $links,
         ]);
 
         $this->assertIsArray($release->streaming_links);
