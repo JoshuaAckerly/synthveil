@@ -17,17 +17,6 @@ concurrency:
 jobs:
   ci:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: synthveil
-          MYSQL_USER: synthveil
-          MYSQL_PASSWORD: password
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout
@@ -62,6 +51,11 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
+      - name: PHP Syntax Check
+        run: |
+          find . -name '*.php' -not -path './vendor/*' -print0 | \
+          xargs -0 -n1 php -l
+
       - name: Copy Environment File
         run: cp .env.example .env
 
@@ -69,4 +63,7 @@ jobs:
         run: php artisan key:generate
 
       - name: Tests
-        run: ./vendor/bin/phpunit
+        run: ./vendor/bin/phpunit --colors=always --coverage-text
+
+      - name: Security audit
+        run: composer audit
