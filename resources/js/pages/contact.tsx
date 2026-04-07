@@ -1,4 +1,5 @@
 import SEO from '@/components/seo';
+import { trackFormSubmission } from '@/hooks/use-google-analytics';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FormControl, FormField, FormLabel, FormMessage } from '@/components/ui/form';
@@ -22,6 +23,10 @@ export default function Contact({ success }: Props) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Track contact form submission
+        trackFormSubmission('contact_form');
+        
         post('/contact', {
             onStart: () => setSubmitError(null),
             onError: (formErrors) => {
