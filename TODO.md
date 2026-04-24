@@ -1,7 +1,7 @@
 # TODO
 
 ## 🔒 Security (HIGH PRIORITY)
-- [ ] Implement rate limiting on API endpoints (currently missing)
+- [x] Implement rate limiting on API endpoints and contact form
 
 ## Features
 - [ ] File upload functionality (release artwork, event images)

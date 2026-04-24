@@ -30,7 +30,7 @@ Route::get('/contact', function () {
     return Inertia::render('contact');
 })->name('contact');
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
 Route::redirect('/login', '/', 301);
 Route::redirect('/register', '/', 301);
