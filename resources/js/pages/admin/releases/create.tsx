@@ -99,11 +99,7 @@ export default function Create() {
                             <FormField name="cover_image" error={errors.cover_image}>
                                 <FormLabel>Cover Image</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => setData('cover_image', e.target.files?.[0] ?? null)}
-                                    />
+                                    <Input type="file" accept="image/*" onChange={(e) => setData('cover_image', e.target.files?.[0] ?? null)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>

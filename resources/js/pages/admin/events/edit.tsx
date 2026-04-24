@@ -155,22 +155,12 @@ export default function Edit({ event }: Props) {
                             <FormField name="event_image" error={errors.event_image}>
                                 <FormLabel>Event Image</FormLabel>
                                 {event.event_image && (
-                                    <img
-                                        src={event.event_image}
-                                        alt="Current event image"
-                                        className="mb-2 h-24 w-24 rounded object-cover"
-                                    />
+                                    <img src={event.event_image} alt="Current event image" className="mb-2 h-24 w-24 rounded object-cover" />
                                 )}
                                 <FormControl>
-                                    <Input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => setData('event_image', e.target.files?.[0] ?? null)}
-                                    />
+                                    <Input type="file" accept="image/*" onChange={(e) => setData('event_image', e.target.files?.[0] ?? null)} />
                                 </FormControl>
-                                {event.event_image && (
-                                    <p className="mt-1 text-sm text-gray-500">Upload a new image to replace the current one.</p>
-                                )}
+                                {event.event_image && <p className="mt-1 text-sm text-gray-500">Upload a new image to replace the current one.</p>}
                                 <FormMessage />
                             </FormField>
 

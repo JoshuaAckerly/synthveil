@@ -147,11 +147,7 @@ export default function Create() {
                             <FormField name="event_image" error={errors.event_image}>
                                 <FormLabel>Event Image</FormLabel>
                                 <FormControl>
-                                    <Input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => setData('event_image', e.target.files?.[0] ?? null)}
-                                    />
+                                    <Input type="file" accept="image/*" onChange={(e) => setData('event_image', e.target.files?.[0] ?? null)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>

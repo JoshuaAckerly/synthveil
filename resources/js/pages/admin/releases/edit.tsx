@@ -108,22 +108,12 @@ export default function Edit({ release }: Props) {
                             <FormField name="cover_image" error={errors.cover_image}>
                                 <FormLabel>Cover Image</FormLabel>
                                 {release.cover_image && (
-                                    <img
-                                        src={release.cover_image}
-                                        alt="Current cover"
-                                        className="mb-2 h-24 w-24 rounded object-cover"
-                                    />
+                                    <img src={release.cover_image} alt="Current cover" className="mb-2 h-24 w-24 rounded object-cover" />
                                 )}
                                 <FormControl>
-                                    <Input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => setData('cover_image', e.target.files?.[0] ?? null)}
-                                    />
+                                    <Input type="file" accept="image/*" onChange={(e) => setData('cover_image', e.target.files?.[0] ?? null)} />
                                 </FormControl>
-                                {release.cover_image && (
-                                    <p className="mt-1 text-sm text-gray-500">Upload a new image to replace the current one.</p>
-                                )}
+                                {release.cover_image && <p className="mt-1 text-sm text-gray-500">Upload a new image to replace the current one.</p>}
                                 <FormMessage />
                             </FormField>
 
