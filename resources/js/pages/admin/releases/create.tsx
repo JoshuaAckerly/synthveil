@@ -9,11 +9,19 @@ import Main from '@/layouts/main';
 import { Link, useForm } from '@inertiajs/react';
 
 export default function Create() {
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm<{
+        title: string;
+        description: string;
+        type: string;
+        release_date: string;
+        cover_image: File | null;
+        is_featured: boolean;
+    }>({
         title: '',
         description: '',
         type: 'single',
         release_date: '',
+        cover_image: null,
         is_featured: false,
     });
 
@@ -86,6 +94,18 @@ export default function Create() {
                                     </FormControl>
                                     <FormLabel>Featured Release</FormLabel>
                                 </div>
+                            </FormField>
+
+                            <FormField name="cover_image" error={errors.cover_image}>
+                                <FormLabel>Cover Image</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => setData('cover_image', e.target.files?.[0] ?? null)}
+                                    />
+                                </FormControl>
+                                <FormMessage />
                             </FormField>
 
                             <div className="flex gap-4">

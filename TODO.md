@@ -4,7 +4,7 @@
 - [x] Implement rate limiting on API endpoints and contact form
 
 ## Features
-- [ ] File upload functionality (release artwork, event images)
+- [x] File upload functionality (release artwork, event images — S3)
 - [ ] Configure queue driver (Redis/database)
 - [ ] Set up file storage (S3/local)
 - [ ] Real-time notifications

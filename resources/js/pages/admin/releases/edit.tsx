@@ -14,6 +14,7 @@ interface Release {
     description?: string;
     type: string;
     release_date: string;
+    cover_image?: string;
     is_featured: boolean;
 }
 
@@ -22,17 +23,25 @@ interface Props {
 }
 
 export default function Edit({ release }: Props) {
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, put, processing, errors } = useForm<{
+        title: string;
+        description: string;
+        type: string;
+        release_date: string;
+        cover_image: File | null;
+        is_featured: boolean;
+    }>({
         title: release.title,
         description: release.description || '',
         type: release.type,
         release_date: release.release_date,
+        cover_image: null,
         is_featured: release.is_featured,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        put(`/admin/releases/${release.id}`);
+        put(`/admin/releases/${release.id}`, { forceFormData: true });
     };
 
     return (
@@ -94,6 +103,28 @@ export default function Edit({ release }: Props) {
                                     </FormControl>
                                     <FormLabel>Featured Release</FormLabel>
                                 </div>
+                            </FormField>
+
+                            <FormField name="cover_image" error={errors.cover_image}>
+                                <FormLabel>Cover Image</FormLabel>
+                                {release.cover_image && (
+                                    <img
+                                        src={release.cover_image}
+                                        alt="Current cover"
+                                        className="mb-2 h-24 w-24 rounded object-cover"
+                                    />
+                                )}
+                                <FormControl>
+                                    <Input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => setData('cover_image', e.target.files?.[0] ?? null)}
+                                    />
+                                </FormControl>
+                                {release.cover_image && (
+                                    <p className="mt-1 text-sm text-gray-500">Upload a new image to replace the current one.</p>
+                                )}
+                                <FormMessage />
                             </FormField>
 
                             <div className="flex gap-4">

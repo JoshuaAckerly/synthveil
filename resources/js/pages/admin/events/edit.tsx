@@ -7,8 +7,25 @@ import { Textarea } from '@/components/ui/textarea';
 import Main from '@/layouts/main';
 import { Link, useForm } from '@inertiajs/react';
 
-export default function Create() {
-    const { data, setData, post, processing, errors } = useForm<{
+interface Event {
+    id: number;
+    title: string;
+    description?: string;
+    event_image?: string;
+    venue: string;
+    location: string;
+    event_date: string;
+    price?: string;
+    ticket_url?: string;
+    is_featured: boolean;
+}
+
+interface Props {
+    event: Event;
+}
+
+export default function Edit({ event }: Props) {
+    const { data, setData, put, processing, errors } = useForm<{
         title: string;
         description: string;
         event_image: File | null;
@@ -19,20 +36,20 @@ export default function Create() {
         ticket_url: string;
         is_featured: boolean;
     }>({
-        title: '',
-        description: '',
+        title: event.title,
+        description: event.description || '',
         event_image: null,
-        venue: '',
-        location: '',
-        event_date: '',
-        price: '',
-        ticket_url: '',
-        is_featured: false,
+        venue: event.venue,
+        location: event.location,
+        event_date: event.event_date,
+        price: event.price || '',
+        ticket_url: event.ticket_url || '',
+        is_featured: event.is_featured,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        post('/admin/events');
+        put(`/admin/events/${event.id}`, { forceFormData: true });
     };
 
     return (
@@ -42,7 +59,7 @@ export default function Create() {
                     <Link href="/admin/events" className="text-indigo-600 hover:text-indigo-700">
                         ← Back to Events
                     </Link>
-                    <h1 className="mt-4 text-4xl font-bold text-gray-900 dark:text-white">Add Event</h1>
+                    <h1 className="mt-4 text-4xl font-bold text-gray-900 dark:text-white">Edit Event</h1>
                 </div>
 
                 <Card>
@@ -54,7 +71,7 @@ export default function Create() {
                             <FormField name="title" error={errors.title}>
                                 <FormLabel>Title</FormLabel>
                                 <FormControl>
-                                    <Input value={data.title} onChange={(e) => setData('title', e.target.value)} placeholder="Event title" />
+                                    <Input value={data.title} onChange={(e) => setData('title', e.target.value)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -63,7 +80,7 @@ export default function Create() {
                                 <FormField name="venue" error={errors.venue}>
                                     <FormLabel>Venue</FormLabel>
                                     <FormControl>
-                                        <Input value={data.venue} onChange={(e) => setData('venue', e.target.value)} placeholder="Venue name" />
+                                        <Input value={data.venue} onChange={(e) => setData('venue', e.target.value)} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormField>
@@ -71,11 +88,7 @@ export default function Create() {
                                 <FormField name="location" error={errors.location}>
                                     <FormLabel>Location</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            value={data.location}
-                                            onChange={(e) => setData('location', e.target.value)}
-                                            placeholder="City, State"
-                                        />
+                                        <Input value={data.location} onChange={(e) => setData('location', e.target.value)} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormField>
@@ -125,12 +138,7 @@ export default function Create() {
                             <FormField name="description" error={errors.description}>
                                 <FormLabel>Description</FormLabel>
                                 <FormControl>
-                                    <Textarea
-                                        value={data.description}
-                                        onChange={(e) => setData('description', e.target.value)}
-                                        placeholder="Event description"
-                                        rows={4}
-                                    />
+                                    <Textarea value={data.description} onChange={(e) => setData('description', e.target.value)} rows={4} />
                                 </FormControl>
                                 <FormMessage />
                             </FormField>
@@ -146,6 +154,13 @@ export default function Create() {
 
                             <FormField name="event_image" error={errors.event_image}>
                                 <FormLabel>Event Image</FormLabel>
+                                {event.event_image && (
+                                    <img
+                                        src={event.event_image}
+                                        alt="Current event image"
+                                        className="mb-2 h-24 w-24 rounded object-cover"
+                                    />
+                                )}
                                 <FormControl>
                                     <Input
                                         type="file"
@@ -153,12 +168,15 @@ export default function Create() {
                                         onChange={(e) => setData('event_image', e.target.files?.[0] ?? null)}
                                     />
                                 </FormControl>
+                                {event.event_image && (
+                                    <p className="mt-1 text-sm text-gray-500">Upload a new image to replace the current one.</p>
+                                )}
                                 <FormMessage />
                             </FormField>
 
                             <div className="flex gap-4">
                                 <Button type="submit" disabled={processing}>
-                                    {processing ? 'Creating...' : 'Create Event'}
+                                    {processing ? 'Updating...' : 'Update Event'}
                                 </Button>
                                 <Button variant="outline" asChild>
                                     <Link href="/admin/events">Cancel</Link>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class EventController extends Controller
@@ -26,6 +27,7 @@ class EventController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'event_image' => 'nullable|image|max:5120',
             'venue' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'event_date' => 'required|date',
@@ -33,6 +35,12 @@ class EventController extends Controller
             'ticket_url' => 'nullable|url',
             'is_featured' => 'boolean',
         ]);
+
+        if ($request->hasFile('event_image')) {
+            $validated['event_image'] = Storage::disk('s3')->url(
+                $request->file('event_image')->store('synthveil/events', 's3')
+            );
+        }
 
         Event::create($validated);
 
@@ -49,6 +57,7 @@ class EventController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'event_image' => 'nullable|image|max:5120',
             'venue' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'event_date' => 'required|date',
@@ -57,6 +66,18 @@ class EventController extends Controller
             'is_featured' => 'boolean',
         ]);
 
+        if ($request->hasFile('event_image')) {
+            if ($event->event_image) {
+                $oldPath = parse_url($event->event_image, PHP_URL_PATH);
+                Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+            }
+            $validated['event_image'] = Storage::disk('s3')->url(
+                $request->file('event_image')->store('synthveil/events', 's3')
+            );
+        } else {
+            unset($validated['event_image']);
+        }
+
         $event->update($validated);
 
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully!');
@@ -64,6 +85,11 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
+        if ($event->event_image) {
+            $oldPath = parse_url($event->event_image, PHP_URL_PATH);
+            Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+        }
+
         $event->delete();
 
         return back()->with('success', 'Event deleted successfully!');
