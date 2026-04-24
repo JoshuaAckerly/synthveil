@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\ReleaseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return Inertia::render('admin/dashboard');
     })->name('dashboard');

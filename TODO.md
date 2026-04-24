@@ -1,57 +1,40 @@
 # TODO
 
-## Setup & Configuration
-
-- [ ] Configure queue driver (Redis/database)
-- [ ] Set up file storage (S3/local)
-
-## Frontend Components
-
-- [x] Add loading states and error handling
+## 🔒 Security (HIGH PRIORITY)
+- [ ] Implement rate limiting on API endpoints (currently missing)
 
 ## Features
-
-- [ ] File upload functionality
-- [x] Search and filtering
-- [x] Pagination components
+- [ ] File upload functionality (release artwork, event images)
+- [ ] Configure queue driver (Redis/database)
+- [ ] Set up file storage (S3/local)
 - [ ] Real-time notifications
-- [ ] API endpoints for mobile app
 
 ## Testing
-
 - [ ] Create frontend component tests
 - [ ] Set up end-to-end testing
 - [ ] Add test coverage reporting
 
-## Performance & Optimization
-
+## Performance
 - [ ] Implement caching strategy
 - [ ] Optimize database queries
 - [ ] Add image optimization
 - [ ] Set up CDN for assets
 - [ ] Implement lazy loading
 
-## Security
-
-- [ ] Add CSRF protection
-- [ ] Implement rate limiting
-- [ ] Set up input validation
-- [ ] Add XSS protection
-- [ ] Configure HTTPS
-
-## Deployment
-
-- [x] Set up CI/CD pipeline
-- [x] Configure production environment
-- [x] Set up monitoring and logging
-- [x] Create backup strategy
-- [x] Document deployment process
-
 ## Documentation
-
 - [ ] API documentation
 - [ ] Component documentation
-- [ ] Deployment guide
-- [ ] Contributing guidelines
-- [ ] Code style guide
+
+## Completed
+- [x] Admin auth middleware (`auth`, `verified` on all admin routes)
+- [x] CSRF protection (Laravel default)
+- [x] HTTPS configured (Let's Encrypt)
+- [x] Dark mode (HandleAppearance middleware)
+- [x] Loading states and error handling
+- [x] Search and filtering
+- [x] Pagination components
+- [x] CI/CD pipeline
+- [x] Production environment
+- [x] Monitoring and logging
+- [x] Backup strategy
 - [x] Update documentation to reflect Linux backend setup
