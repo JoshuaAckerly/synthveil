@@ -34,9 +34,7 @@ export default function Login({ status }: Props) {
                 </div>
 
                 {status && (
-                    <div className="mb-4 rounded-md bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/20 dark:text-green-400">
-                        {status}
-                    </div>
+                    <div className="mb-4 rounded-md bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/20 dark:text-green-400">{status}</div>
                 )}
 
                 <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
