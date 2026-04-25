@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/react';
 import React, { useState } from 'react';
 
 const Logo: React.FC<{ className?: string }> = ({ className }) => (
-    <img alt="Synth Veil" src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg" className={`h-10 w-auto ${className || ''}`} />
+    <img alt="Synth Veil" src="/images/synthveil-logo.webp" className={`h-10 w-auto ${className || ''}`} />
 );
 
 const Header: React.FC = () => {

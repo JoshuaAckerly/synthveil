@@ -92,7 +92,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                     <div>
                         <a href="/" className="flex items-center gap-3">
-                            <img alt="Synth Veil" src="/images/Firefly_bc9b3488-523c-48e2-8e16-906e0d9467f0.svg" className="h-8 w-auto" />
+                            <img alt="Synth Veil" src="/images/synthveil-logo.webp" className="h-8 w-auto" />
                             <span className="font-semibold">Synth Veil</span>
                         </a>
                         <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">Music, live shows, and sonic experiments from Joshua Ackerly.</p>

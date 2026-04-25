@@ -14,16 +14,19 @@ class UserSeeder extends Seeder
                 'name' => 'Admin User',
                 'email' => 'admin@synthveil.com',
                 'password' => bcrypt('password'),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
                 'password' => bcrypt('password'),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => 'Demo User',
                 'email' => 'demo@synthveil.com',
                 'password' => bcrypt('password'),
+                'email_verified_at' => now(),
             ],
         ];
 

@@ -9,7 +9,6 @@ const navigation: NavigationItem[] = [
     { name: 'Music', href: '/music' },
     { name: 'Events', href: '/events' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Login', href: 'http://auth-system.graveyardjokes.test/login?return_url=http://synthveil.graveyardjokes.test' },
 ];
 
 const adminNavigation: NavigationItem[] = [{ name: 'Admin', href: '/admin' }];

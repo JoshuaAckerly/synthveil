@@ -32,7 +32,6 @@ Route::get('/contact', function () {
 
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
-Route::redirect('/login', '/', 301);
 Route::redirect('/register', '/', 301);
 Route::redirect('/forgot-password', '/', 301);
 Route::redirect('/reset-password', '/', 301);
