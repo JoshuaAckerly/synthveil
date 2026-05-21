@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Event;
 use App\Models\Release;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -63,7 +64,8 @@ class PagesTest extends TestCase
     #[Test]
     public function it_loads_the_admin_dashboard(): void
     {
-        $response = $this->get('/admin');
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->get('/admin');
         $response->assertStatus(200);
     }
 }
