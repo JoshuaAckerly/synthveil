@@ -12,7 +12,7 @@ class EventTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_can_create_an_event()
+    public function it_can_create_an_event(): void
     {
         $event = Event::create([
             'title' => 'Test Event',
@@ -32,7 +32,7 @@ class EventTest extends TestCase
     }
 
     #[Test]
-    public function it_casts_event_date_to_datetime()
+    public function it_casts_event_date_to_datetime(): void
     {
         $event = Event::create([
             'title' => 'Test Event',
@@ -45,7 +45,7 @@ class EventTest extends TestCase
     }
 
     #[Test]
-    public function it_casts_price_to_decimal()
+    public function it_casts_price_to_decimal(): void
     {
         $event = Event::create([
             'title' => 'Test Event',

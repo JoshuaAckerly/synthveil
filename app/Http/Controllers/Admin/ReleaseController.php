@@ -4,26 +4,29 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Release;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class ReleaseController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $releases = Release::orderBy('created_at', 'desc')->get();
 
         return Inertia::render('admin/releases/index', ['releases' => $releases]);
     }
 
-    public function create()
+    public function create(): Response
     {
         return Inertia::render('admin/releases/create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -34,9 +37,10 @@ class ReleaseController extends Controller
         ]);
 
         if ($request->hasFile('cover_image')) {
-            $validated['cover_image'] = Storage::disk('s3')->url(
-                $request->file('cover_image')->store('synthveil/releases', 's3')
-            );
+            $path = $request->file('cover_image')->store('synthveil/releases', 's3');
+            if (is_string($path)) {
+                $validated['cover_image'] = Storage::disk('s3')->url($path);
+            }
         }
 
         Release::create($validated);
@@ -44,13 +48,14 @@ class ReleaseController extends Controller
         return redirect()->route('admin.releases.index')->with('success', 'Release created successfully!');
     }
 
-    public function edit(Release $release)
+    public function edit(Release $release): Response
     {
         return Inertia::render('admin/releases/edit', ['release' => $release]);
     }
 
-    public function update(Request $request, Release $release)
+    public function update(Request $request, Release $release): RedirectResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -63,11 +68,14 @@ class ReleaseController extends Controller
         if ($request->hasFile('cover_image')) {
             if ($release->cover_image) {
                 $oldPath = parse_url($release->cover_image, PHP_URL_PATH);
-                Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+                if (is_string($oldPath)) {
+                    Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+                }
             }
-            $validated['cover_image'] = Storage::disk('s3')->url(
-                $request->file('cover_image')->store('synthveil/releases', 's3')
-            );
+            $path = $request->file('cover_image')->store('synthveil/releases', 's3');
+            if (is_string($path)) {
+                $validated['cover_image'] = Storage::disk('s3')->url($path);
+            }
         } else {
             unset($validated['cover_image']);
         }
@@ -77,11 +85,13 @@ class ReleaseController extends Controller
         return redirect()->route('admin.releases.index')->with('success', 'Release updated successfully!');
     }
 
-    public function destroy(Release $release)
+    public function destroy(Release $release): RedirectResponse
     {
         if ($release->cover_image) {
             $oldPath = parse_url($release->cover_image, PHP_URL_PATH);
-            Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+            if (is_string($oldPath)) {
+                Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+            }
         }
 
         $release->delete();

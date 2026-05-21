@@ -12,7 +12,7 @@ class ReleaseTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_can_create_a_release()
+    public function it_can_create_a_release(): void
     {
         $release = Release::create([
             'title' => 'Test Release',
@@ -29,7 +29,7 @@ class ReleaseTest extends TestCase
     }
 
     #[Test]
-    public function it_casts_release_date_to_date()
+    public function it_casts_release_date_to_date(): void
     {
         $release = Release::create([
             'title' => 'Test Release',
@@ -41,7 +41,7 @@ class ReleaseTest extends TestCase
     }
 
     #[Test]
-    public function it_casts_streaming_links_to_array()
+    public function it_casts_streaming_links_to_array(): void
     {
         $links = ['spotify' => 'https://spotify.com', 'apple' => 'https://apple.com'];
 

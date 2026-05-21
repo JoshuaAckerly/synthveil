@@ -4,26 +4,29 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $events = Event::orderBy('event_date', 'desc')->get();
 
         return Inertia::render('admin/events/index', ['events' => $events]);
     }
 
-    public function create()
+    public function create(): Response
     {
         return Inertia::render('admin/events/create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -37,9 +40,10 @@ class EventController extends Controller
         ]);
 
         if ($request->hasFile('event_image')) {
-            $validated['event_image'] = Storage::disk('s3')->url(
-                $request->file('event_image')->store('synthveil/events', 's3')
-            );
+            $path = $request->file('event_image')->store('synthveil/events', 's3');
+            if (is_string($path)) {
+                $validated['event_image'] = Storage::disk('s3')->url($path);
+            }
         }
 
         Event::create($validated);
@@ -47,13 +51,14 @@ class EventController extends Controller
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully!');
     }
 
-    public function edit(Event $event)
+    public function edit(Event $event): Response
     {
         return Inertia::render('admin/events/edit', ['event' => $event]);
     }
 
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Event $event): RedirectResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -69,11 +74,14 @@ class EventController extends Controller
         if ($request->hasFile('event_image')) {
             if ($event->event_image) {
                 $oldPath = parse_url($event->event_image, PHP_URL_PATH);
-                Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+                if (is_string($oldPath)) {
+                    Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+                }
             }
-            $validated['event_image'] = Storage::disk('s3')->url(
-                $request->file('event_image')->store('synthveil/events', 's3')
-            );
+            $path = $request->file('event_image')->store('synthveil/events', 's3');
+            if (is_string($path)) {
+                $validated['event_image'] = Storage::disk('s3')->url($path);
+            }
         } else {
             unset($validated['event_image']);
         }
@@ -83,11 +91,13 @@ class EventController extends Controller
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully!');
     }
 
-    public function destroy(Event $event)
+    public function destroy(Event $event): RedirectResponse
     {
         if ($event->event_image) {
             $oldPath = parse_url($event->event_image, PHP_URL_PATH);
-            Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+            if (is_string($oldPath)) {
+                Storage::disk('s3')->delete(ltrim($oldPath, '/'));
+            }
         }
 
         $event->delete();

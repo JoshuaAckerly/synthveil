@@ -11,7 +11,7 @@ class ContactControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_can_store_a_contact_submission()
+    public function it_can_store_a_contact_submission(): void
     {
         $data = [
             'name' => 'John Doe',
@@ -32,7 +32,7 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_validates_required_fields()
+    public function it_validates_required_fields(): void
     {
         $response = $this->post('/contact', []);
 
@@ -40,7 +40,7 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_validates_email_format()
+    public function it_validates_email_format(): void
     {
         $data = [
             'name' => 'John Doe',

@@ -12,7 +12,7 @@ class ReleaseControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_can_view_releases_index()
+    public function it_can_view_releases_index(): void
     {
         Release::create([
             'title' => 'Test Release',
@@ -26,7 +26,7 @@ class ReleaseControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_can_create_a_release()
+    public function it_can_create_a_release(): void
     {
         $data = [
             'title' => 'New Release',
@@ -48,7 +48,7 @@ class ReleaseControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_validates_release_creation()
+    public function it_validates_release_creation(): void
     {
         $response = $this->post('/admin/releases', []);
 
@@ -56,7 +56,7 @@ class ReleaseControllerTest extends TestCase
     }
 
     #[Test]
-    public function it_can_delete_a_release()
+    public function it_can_delete_a_release(): void
     {
         $release = Release::create([
             'title' => 'Test Release',

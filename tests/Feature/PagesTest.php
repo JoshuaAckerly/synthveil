@@ -13,21 +13,21 @@ class PagesTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_loads_the_homepage()
+    public function it_loads_the_homepage(): void
     {
         $response = $this->get('/');
         $response->assertStatus(200);
     }
 
     #[Test]
-    public function it_loads_the_about_page()
+    public function it_loads_the_about_page(): void
     {
         $response = $this->get('/about');
         $response->assertStatus(200);
     }
 
     #[Test]
-    public function it_loads_the_music_page_with_releases()
+    public function it_loads_the_music_page_with_releases(): void
     {
         Release::create([
             'title' => 'Test Release',
@@ -40,7 +40,7 @@ class PagesTest extends TestCase
     }
 
     #[Test]
-    public function it_loads_the_events_page_with_events()
+    public function it_loads_the_events_page_with_events(): void
     {
         Event::create([
             'title' => 'Test Event',
@@ -54,14 +54,14 @@ class PagesTest extends TestCase
     }
 
     #[Test]
-    public function it_loads_the_contact_page()
+    public function it_loads_the_contact_page(): void
     {
         $response = $this->get('/contact');
         $response->assertStatus(200);
     }
 
     #[Test]
-    public function it_loads_the_admin_dashboard()
+    public function it_loads_the_admin_dashboard(): void
     {
         $response = $this->get('/admin');
         $response->assertStatus(200);

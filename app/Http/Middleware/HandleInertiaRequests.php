@@ -37,9 +37,20 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
+        $rawQuote = Inspiring::quotes()->random();
+        if ($rawQuote instanceof \Stringable) {
+            $rawQuote = $rawQuote->__toString();
+        } elseif (! is_string($rawQuote)) {
+            $rawQuote = '';
+        }
+        /** @var string $rawQuote */
+        $parts = explode('-', $rawQuote, 2);
+        /** @var array<int, string> $parts */
+        $message = isset($parts[0]) ? (string) $parts[0] : '';
+        $author = isset($parts[1]) ? (string) $parts[1] : '';
 
-        return [
+        /** @var array<string, mixed> $result */
+        $result = [
             ...parent::share($request),
             'name' => config('app.name'),
             'quote' => ['message' => trim($message), 'author' => trim($author)],
@@ -52,5 +63,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
+
+        return $result;
     }
 }

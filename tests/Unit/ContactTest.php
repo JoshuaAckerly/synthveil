@@ -12,7 +12,7 @@ class ContactTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_can_create_a_contact()
+    public function it_can_create_a_contact(): void
     {
         $contact = Contact::create([
             'name' => 'John Doe',
@@ -29,7 +29,7 @@ class ContactTest extends TestCase
     }
 
     #[Test]
-    public function it_defaults_is_read_to_false()
+    public function it_defaults_is_read_to_false(): void
     {
         $contact = Contact::create([
             'name' => 'Jane Doe',
@@ -42,7 +42,7 @@ class ContactTest extends TestCase
     }
 
     #[Test]
-    public function it_casts_is_read_to_boolean()
+    public function it_casts_is_read_to_boolean(): void
     {
         $contact = Contact::create([
             'name' => 'Test User',
@@ -51,6 +51,7 @@ class ContactTest extends TestCase
             'is_read' => 1,
         ]);
 
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsBool($contact->is_read);
         $this->assertTrue($contact->is_read);
     }
