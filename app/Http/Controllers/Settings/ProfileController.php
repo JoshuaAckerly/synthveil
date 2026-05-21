@@ -53,7 +53,6 @@ class ProfileController extends Controller
 
         $user = $request->user();
         /** @var \App\Models\User $user */
-
         Auth::logout();
 
         $user->delete();

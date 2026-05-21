@@ -19,7 +19,7 @@ class ReportVisitToAuthSystem implements ShouldQueue
     public int $timeout = 10;
 
     /**
-     * @param array<string, mixed> $visitData
+     * @param  array<string, mixed>  $visitData
      */
     public function __construct(private readonly array $visitData) {}
 
