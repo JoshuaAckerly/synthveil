@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -41,7 +42,7 @@ class EventTest extends TestCase
             'event_date' => '2024-12-01 20:00:00',
         ]);
 
-        $this->assertInstanceOf(\Carbon\Carbon::class, $event->event_date);
+        $this->assertInstanceOf(Carbon::class, $event->event_date);
     }
 
     #[Test]

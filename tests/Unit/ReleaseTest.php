@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Release;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -37,7 +38,7 @@ class ReleaseTest extends TestCase
             'release_date' => '2024-01-01',
         ]);
 
-        $this->assertInstanceOf(\Carbon\Carbon::class, $release->release_date);
+        $this->assertInstanceOf(Carbon::class, $release->release_date);
     }
 
     #[Test]
