@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin;
 
 use App\Models\Release;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -10,6 +11,14 @@ use Tests\TestCase;
 class ReleaseControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+    private User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create();
+    }
 
     #[Test]
     public function it_can_view_releases_index(): void
@@ -20,7 +29,7 @@ class ReleaseControllerTest extends TestCase
             'release_date' => '2024-01-01',
         ]);
 
-        $response = $this->get('/admin/releases');
+        $response = $this->actingAs($this->user)->get('/admin/releases');
 
         $response->assertStatus(200);
     }
@@ -36,7 +45,7 @@ class ReleaseControllerTest extends TestCase
             'is_featured' => true,
         ];
 
-        $response = $this->post('/admin/releases', $data);
+        $response = $this->actingAs($this->user)->post('/admin/releases', $data);
 
         $response->assertRedirect('/admin/releases');
         $response->assertSessionHas('success', 'Release created successfully!');
@@ -50,7 +59,7 @@ class ReleaseControllerTest extends TestCase
     #[Test]
     public function it_validates_release_creation(): void
     {
-        $response = $this->post('/admin/releases', []);
+        $response = $this->actingAs($this->user)->post('/admin/releases', []);
 
         $response->assertSessionHasErrors(['title', 'type', 'release_date']);
     }
@@ -64,7 +73,7 @@ class ReleaseControllerTest extends TestCase
             'release_date' => '2024-01-01',
         ]);
 
-        $response = $this->delete("/admin/releases/{$release->id}");
+        $response = $this->actingAs($this->user)->delete("/admin/releases/{$release->id}");
 
         $response->assertRedirect();
         $response->assertSessionHas('success', 'Release deleted successfully!');
