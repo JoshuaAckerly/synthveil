@@ -26,7 +26,7 @@
 - [ ] Component documentation
 
 ## Automation
-- [ ] Add Dependabot (`.github/dependabot.yml`) for npm + composer automated dependency PRs
+- [x] Add Dependabot (`.github/dependabot.yml`) for npm + composer automated dependency PRs
 
 ## Completed
 - [x] Admin auth middleware (`auth`, `verified` on all admin routes)
