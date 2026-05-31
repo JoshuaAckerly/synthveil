@@ -25,6 +25,9 @@
 - [ ] API documentation
 - [ ] Component documentation
 
+## Automation
+- [ ] Add Dependabot (`.github/dependabot.yml`) for npm + composer automated dependency PRs
+
 ## Completed
 - [x] Admin auth middleware (`auth`, `verified` on all admin routes)
 - [x] CSRF protection (Laravel default)
