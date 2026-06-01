@@ -17,21 +17,9 @@ const Main: React.FC<React.PropsWithChildren> = ({ children }) => {
             setIsNavigating(false);
         });
 
-        const removeInvalid = router.on('invalid', () => {
-            setIsNavigating(false);
-            setNavigationError('The page could not be loaded. Please try again.');
-        });
-
-        const removeException = router.on('exception', () => {
-            setIsNavigating(false);
-            setNavigationError('An unexpected error occurred while loading the page.');
-        });
-
         return () => {
             removeStart();
             removeFinish();
-            removeInvalid();
-            removeException();
         };
     }, []);
 
