@@ -118,5 +118,7 @@
         "resources/js/**/*.ts",
         "resources/js/**/*.d.ts",
         "resources/js/**/*.tsx",
+        "vite-env.d.ts",
+        "../packages/types.d.ts"
     ]
 }
