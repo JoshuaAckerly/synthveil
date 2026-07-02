@@ -60,7 +60,7 @@ export default defineConfig(({ mode }) => {
                 '@gj/utils': resolve(__dirname, '../packages/utils/src/index.ts'),
                 '@gj/hooks': resolve(__dirname, '../packages/hooks/src/index.ts'),
             },
-            dedupe: ['react', 'react-dom'],
+            dedupe: ['react', 'react-dom', 'clsx', 'tailwind-merge'],
         },
         ssr: {
             noExternal: ['react', 'react-dom', '@inertiajs/react', '@inertiajs/core', '@headlessui/react'],
