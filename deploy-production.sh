@@ -26,6 +26,10 @@ git reset --hard origin/main
 echo "🐘 Installing PHP dependencies..."
 composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader --classmap-authoritative --no-dev
 
+# Install shared package dependencies
+echo "📦 Installing shared package dependencies..."
+cd /var/www/packages/utils && npm install && cd "$DEPLOY_PATH"
+
 # Install/Update Node dependencies
 echo "📦 Installing Node dependencies..."
 npm ci --production=false
