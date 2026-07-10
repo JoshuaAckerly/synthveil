@@ -5,8 +5,8 @@ Music artist website. Showcases releases, upcoming events, and provides a contac
 
 ## Tech Stack
 - **Backend**: Laravel 12, PHP 8.2+, Sanctum (session)
-- **Frontend**: React 19, TypeScript, Inertia.js 2, Tailwind CSS 4, Radix UI, Headless UI, Heroicons, Vite (with `dev:ssr` concurrently script)
-- **Testing**: PHPUnit 11 (`php artisan test`)
+- **Frontend**: React 19, TypeScript, Inertia.js 3, Tailwind CSS 4, Radix UI, Headless UI, Heroicons, Vite (with `dev:ssr` concurrently script)
+- **Testing**: PHPUnit 11 (`php artisan test`), Vitest + React Testing Library
 - **Storage**: MySQL (prod), SQLite (tests), optional Redis/S3
 
 ## Architecture
@@ -47,6 +47,7 @@ Music artist website. Showcases releases, upcoming events, and provides a contac
 ## Build & Test
 ```bash
 php artisan test
+npm run test            # Vitest
 npm run build:ssr
 npm run dev:ssr       # SSR dev mode
 npm run types
