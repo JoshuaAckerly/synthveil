@@ -29,7 +29,11 @@ export default defineConfig(({ mode }) => {
             host: '0.0.0.0',
             origin: 'http://synthveil.graveyardjokes.local:8085',
             cors: {
-                origin: 'http://synthveil.graveyardjokes.local',
+                origin: [
+                    'http://synthveil.graveyardjokes.local',
+                    'http://synthveil.graveyardjokes.local:8004',
+                    'http://localhost:8004',
+                ],
                 credentials: true
             },
             allowedHosts: ['synthveil.graveyardjokes.local'],
