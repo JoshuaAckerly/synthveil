@@ -1,11 +1,22 @@
 import '../css/app.css';
 
+import * as Sentry from '@sentry/react';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const sentryDsn = import.meta.env.VITE_SENTRY_DSN as string | undefined;
+
+if (sentryDsn) {
+    Sentry.init({
+        dsn: sentryDsn,
+        environment: import.meta.env.MODE,
+        integrations: [Sentry.browserTracingIntegration()],
+        tracesSampleRate: 0.05,
+    });
+}
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),

@@ -5,19 +5,19 @@
 
 ## Features
 - [x] File upload functionality (release artwork, event images — S3)
-- [ ] Configure queue driver (Redis/database)
-- [ ] Set up file storage (S3/local)
+- [x] Configure queue driver (Redis/database) — set `QUEUE_CONNECTION=redis` in production; see .env.example
+- [x] Set up file storage (S3/local) — set `FILESYSTEM_DISK=s3` in production; AWS credentials in .env.example
 - [ ] Real-time notifications
 
 ## Testing
-- [ ] Create frontend component tests
+- [x] Create frontend component tests
 - [ ] Set up end-to-end testing
 - [ ] Add test coverage reporting
 
 ## Performance
-- [ ] Implement caching strategy
+- [x] Implement caching strategy (releases.index + events.index via Cache::remember)
 - [ ] Optimize database queries
-- [ ] Add image optimization
+- [x] Add image optimization (lazy loading on all img tags)
 - [ ] Set up CDN for assets
 - [ ] Implement lazy loading
 

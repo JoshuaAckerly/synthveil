@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Release;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -44,6 +45,7 @@ class ReleaseController extends Controller
         }
 
         Release::create($validated);
+        Cache::forget('releases.index');
 
         return redirect()->route('admin.releases.index')->with('success', 'Release created successfully!');
     }
@@ -81,6 +83,7 @@ class ReleaseController extends Controller
         }
 
         $release->update($validated);
+        Cache::forget('releases.index');
 
         return redirect()->route('admin.releases.index')->with('success', 'Release updated successfully!');
     }
@@ -95,6 +98,7 @@ class ReleaseController extends Controller
         }
 
         $release->delete();
+        Cache::forget('releases.index');
 
         return back()->with('success', 'Release deleted successfully!');
     }

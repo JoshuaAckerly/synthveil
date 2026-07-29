@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Models\Event;
 use App\Models\Release;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use League\CommonMark\CommonMarkConverter;
@@ -16,13 +17,13 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/music', function () {
-    $releases = Release::orderBy('release_date', 'desc')->get();
+    $releases = Cache::remember('releases.index', 600, fn () => Release::orderBy('release_date', 'desc')->get());
 
     return Inertia::render('music', ['releases' => $releases]);
 })->name('music');
 
 Route::get('/events', function () {
-    $events = Event::orderBy('event_date', 'desc')->get();
+    $events = Cache::remember('events.index', 600, fn () => Event::orderBy('event_date', 'desc')->get());
 
     return Inertia::render('events', ['events' => $events]);
 })->name('events');
