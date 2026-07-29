@@ -4,7 +4,7 @@ import laravel from 'laravel-vite-plugin';
 import { resolve } from 'node:path';
 import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, isSsrBuild }) => {
     const env = loadEnv(mode, process.cwd(), '');
 
     let server;
@@ -72,7 +72,7 @@ export default defineConfig(({ mode }) => {
         build: {
             rollupOptions: {
                 output: {
-                    manualChunks: {
+                    manualChunks: isSsrBuild ? undefined : {
                         vendor: ['react', 'react-dom'],
                         inertia: ['@inertiajs/react', '@inertiajs/core'],
                         sentry: ['@sentry/react'],
