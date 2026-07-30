@@ -139,3 +139,50 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* ── Synth Veil animations ──────────────────────────────────────────────── */
+
+@keyframes sv-gradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes sv-float-a {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.35; }
+    40%  { transform: translate(40px, -60px) scale(1.15); opacity: 0.5; }
+    70%  { transform: translate(-30px, 25px) scale(0.9); opacity: 0.25; }
+}
+
+@keyframes sv-float-b {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+    30%  { transform: translate(-50px, 40px) scale(1.2); opacity: 0.45; }
+    65%  { transform: translate(35px, -30px) scale(0.85); opacity: 0.2; }
+}
+
+@keyframes sv-float-c {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+    50%  { transform: translate(20px, 50px) scale(1.1); opacity: 0.4; }
+}
+
+@keyframes sv-pulse-ring {
+    0%   { transform: scale(0.9); opacity: 0.6; }
+    70%  { transform: scale(1.3); opacity: 0; }
+    100% { transform: scale(1.3); opacity: 0; }
+}
+
+.sv-gradient-bg {
+    background: linear-gradient(135deg, #0a0118 0%, #1a0533 25%, #0c1a3a 50%, #001a2e 75%, #0a0118 100%);
+    background-size: 400% 400%;
+    animation: sv-gradient 14s ease infinite;
+}
+
+.sv-orb-a {
+    animation: sv-float-a 18s ease-in-out infinite;
+}
+.sv-orb-b {
+    animation: sv-float-b 22s ease-in-out infinite;
+}
+.sv-orb-c {
+    animation: sv-float-c 16s ease-in-out infinite;
+}
