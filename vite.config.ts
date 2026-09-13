@@ -27,16 +27,17 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         server = {
             port: 8085,
             host: '0.0.0.0',
-            origin: 'http://synthveil.graveyardjokes.local:8085',
+            origin: env.VITE_ORIGIN || 'http://synthveil.graveyardjokes.test:8085',
             cors: {
                 origin: [
-                    'http://synthveil.graveyardjokes.local',
-                    'http://synthveil.graveyardjokes.local:8004',
+                    'http://synthveil.graveyardjokes.test',
+                    'http://synthveil.graveyardjokes.test:8004',
                     'http://localhost:8004',
+                    'http://10.0.1.20:8004',
                 ],
                 credentials: true
             },
-            allowedHosts: ['synthveil.graveyardjokes.local'],
+            allowedHosts: ['synthveil.graveyardjokes.test', '10.0.1.20'],
         };
     }
 
