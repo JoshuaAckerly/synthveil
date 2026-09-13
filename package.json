@@ -20,17 +20,22 @@
         "@testing-library/react": "^16.3.2",
         "@testing-library/user-event": "^14.6.1",
         "@types/node": "^22.13.5",
-        "@vitest/ui": "^4.1.9",
-        "eslint": "^9.39.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "@vitest/ui": "^5.0.0",
+        "concurrently": "^10.0.5",
+        "eslint": "^10.10.0",
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-react-hooks": "^5.1.0",
         "jsdom": "^29.1.1",
+        "laravel-vite-plugin": "^3.2.0",
         "prettier": "^3.8.3",
         "prettier-plugin-organize-imports": "^4.1.0",
         "prettier-plugin-tailwindcss": "^0.6.14",
+        "typescript": "^7.0.2",
         "typescript-eslint": "^8.23.0",
-        "vitest": "^4.1.9",
+        "vite": "^8.3.0",
+        "vitest": "^5.0.0",
         "ziggy-js": "^2.6.2"
     },
     "dependencies": {
@@ -55,15 +60,12 @@
         "@tailwindcss/vite": "^4.1.11",
         "@types/react": "^19.0.3",
         "@types/react-dom": "^19.0.2",
-        "@vitejs/plugin-react": "^4.6.0",
         "axios": "^1.18.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
-        "concurrently": "^9.0.1",
         "deepmerge": "^4.3.1",
         "globals": "^15.14.0",
         "gsap": "^3.15.0",
-        "laravel-vite-plugin": "^2.0",
         "lodash-es": "^4.18.1",
         "lucide-react": "^0.475.0",
         "qs": "^6.15.3",
@@ -71,13 +73,15 @@
         "react-dom": "^19.0.0",
         "tailwind-merge": "^3.0.1",
         "tailwindcss": "^4.0.0",
-        "tailwindcss-animate": "^1.0.7",
-        "typescript": "^5.7.2",
-        "vite": "^7.0.4"
+        "tailwindcss-animate": "^1.0.7"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
         "@tailwindcss/oxide-linux-x64-gnu": "^4.3.0",
         "lightningcss-linux-x64-gnu": "^1.29.1"
+    },
+    "allowScripts": {
+        "esbuild@0.28.1": true,
+        "@tailwindcss/oxide@4.2.1": true
     }
 }

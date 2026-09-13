@@ -29,5 +29,5 @@ createServer(
                 return <App {...props} />;
             },
         }),
-    13719, // synthveil SSR port
+    { port: 13719, host: '127.0.0.1' }, // synthveil SSR port
 );
